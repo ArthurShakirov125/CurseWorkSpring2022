@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ec8ffb0d2be4721a66d5ba5854a13d9" Name="Diagram1" ZoomLevel="77" >
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.University" Width="1.5" PointX="1.625" PointY="1.375" FillColor="Teal" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Faculty" Width="1.5" PointX="4.125" PointY="2.125" FillColor="Cyan" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Department" Width="1.5" PointX="6.375" PointY="2" FillColor="Cyan" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.FacultyDepartment" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Flow" Width="1.5" PointX="8.625" PointY="1.875" FillColor="Cyan" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.DepartmentFlow" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Group" Width="1.5" PointX="8.625" PointY="4.5" FillColor="Cyan" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.FlowGroup" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Enrollee" Width="1.5" PointX="4" PointY="4.5" FillColor="Red" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_sheet" Width="1.5" PointX="6.375" PointY="4.375" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.EnrolleeExam_sheet" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.Exam_sheetGroup" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_statement" Width="1.5" PointX="11" PointY="6" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.EnrolleeExam_statement" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Subject" Width="1.5" PointX="13.125" PointY="5.875" FillColor="Lime" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.Exam_statementSubject" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_schedule" Width="1.5" PointX="12.25" PointY="1" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Consultation" Width="1.5" PointX="12.25" PointY="3.375" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.FlowExam_schedule" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.FlowConsultation" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.ConsultationSubject" />
+        <AssociationConnector Association="AdmissionsCommitteeDB.Exam_scheduleSubject" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

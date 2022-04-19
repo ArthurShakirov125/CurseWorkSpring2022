@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdmissionsCommitteeDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AdmissionsCommitteeDBStoreContainer">
+    <EntitySet Name="UniversitySet" EntityType="AdmissionsCommitteeDB.Store.UniversitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacultySet" EntityType="AdmissionsCommitteeDB.Store.FacultySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DepartmentSet" EntityType="AdmissionsCommitteeDB.Store.DepartmentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FlowSet" EntityType="AdmissionsCommitteeDB.Store.FlowSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupSet" EntityType="AdmissionsCommitteeDB.Store.GroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EnrolleeSet" EntityType="AdmissionsCommitteeDB.Store.EnrolleeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Exam_sheetSet" EntityType="AdmissionsCommitteeDB.Store.Exam_sheetSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Exam_statementSet" EntityType="AdmissionsCommitteeDB.Store.Exam_statementSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectSet" EntityType="AdmissionsCommitteeDB.Store.SubjectSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Exam_scheduleSet" EntityType="AdmissionsCommitteeDB.Store.Exam_scheduleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConsultationSet" EntityType="AdmissionsCommitteeDB.Store.ConsultationSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FacultyDepartment" Association="AdmissionsCommitteeDB.Store.FacultyDepartment">
+      <End Role="Faculty" EntitySet="FacultySet" />
+      <End Role="Department" EntitySet="DepartmentSet" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentFlow" Association="AdmissionsCommitteeDB.Store.DepartmentFlow">
+      <End Role="Department" EntitySet="DepartmentSet" />
+      <End Role="Flow" EntitySet="FlowSet" />
+    </AssociationSet>
+    <AssociationSet Name="FlowGroup" Association="AdmissionsCommitteeDB.Store.FlowGroup">
+      <End Role="Flow" EntitySet="FlowSet" />
+      <End Role="Group" EntitySet="GroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="EnrolleeExam_sheet" Association="AdmissionsCommitteeDB.Store.EnrolleeExam_sheet">
+      <End Role="Enrollee" EntitySet="EnrolleeSet" />
+      <End Role="Exam_sheet" EntitySet="Exam_sheetSet" />
+    </AssociationSet>
+    <AssociationSet Name="Exam_sheetGroup" Association="AdmissionsCommitteeDB.Store.Exam_sheetGroup">
+      <End Role="Exam_sheet" EntitySet="Exam_sheetSet" />
+      <End Role="Group" EntitySet="GroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="EnrolleeExam_statement" Association="AdmissionsCommitteeDB.Store.EnrolleeExam_statement">
+      <End Role="Enrollee" EntitySet="EnrolleeSet" />
+      <End Role="Exam_statement" EntitySet="Exam_statementSet" />
+    </AssociationSet>
+    <AssociationSet Name="Exam_statementSubject" Association="AdmissionsCommitteeDB.Store.Exam_statementSubject">
+      <End Role="Exam_statement" EntitySet="Exam_statementSet" />
+      <End Role="Subject" EntitySet="SubjectSet" />
+    </AssociationSet>
+    <AssociationSet Name="FlowExam_schedule" Association="AdmissionsCommitteeDB.Store.FlowExam_schedule">
+      <End Role="Flow" EntitySet="FlowSet" />
+      <End Role="Exam_schedule" EntitySet="Exam_scheduleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FlowConsultation" Association="AdmissionsCommitteeDB.Store.FlowConsultation">
+      <End Role="Flow" EntitySet="FlowSet" />
+      <End Role="Consultation" EntitySet="ConsultationSet" />
+    </AssociationSet>
+    <AssociationSet Name="ConsultationSubject" Association="AdmissionsCommitteeDB.Store.ConsultationSubject">
+      <End Role="Consultation" EntitySet="ConsultationSet" />
+      <End Role="Subject" EntitySet="SubjectSet" />
+    </AssociationSet>
+    <AssociationSet Name="Exam_scheduleSubject" Association="AdmissionsCommitteeDB.Store.Exam_scheduleSubject">
+      <End Role="Exam_schedule" EntitySet="Exam_scheduleSet" />
+      <End Role="Subject" EntitySet="SubjectSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UniversitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacultySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Competition" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DepartmentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Faculty_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlowSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Department_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Flow_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnrolleeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Education" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Graduation" Type="datetime" Nullable="false" />
+    <Property Name="Golden_medal" Type="bit" Nullable="false" />
+    <Property Name="Silver_medal" Type="bit" Nullable="false" />
+    <Property Name="Exam_sheet_Exam_sheet_number" Type="int" Nullable="false" />
+    <Property Name="Exam_statement_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam_sheetSet">
+    <Key>
+      <PropertyRef Name="Exam_sheet_number" />
+    </Key>
+    <Property Name="Exam_sheet_number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam_statementSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mark" Type="tinyint" Nullable="false" />
+    <Property Name="Points" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Pass_points" Type="smallint" Nullable="false" />
+    <Property Name="Exam_statement_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam_scheduleSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classroom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Flow_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsultationSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Classroom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Flow_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FacultyDepartment">
+    <End Role="Faculty" Type="AdmissionsCommitteeDB.Store.FacultySet" Multiplicity="1" />
+    <End Role="Department" Type="AdmissionsCommitteeDB.Store.DepartmentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="Faculty_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentFlow">
+    <End Role="Department" Type="AdmissionsCommitteeDB.Store.DepartmentSet" Multiplicity="1" />
+    <End Role="Flow" Type="AdmissionsCommitteeDB.Store.FlowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FlowGroup">
+    <End Role="Flow" Type="AdmissionsCommitteeDB.Store.FlowSet" Multiplicity="1" />
+    <End Role="Group" Type="AdmissionsCommitteeDB.Store.GroupSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="Flow_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EnrolleeExam_sheet">
+    <End Role="Enrollee" Type="AdmissionsCommitteeDB.Store.EnrolleeSet" Multiplicity="*" />
+    <End Role="Exam_sheet" Type="AdmissionsCommitteeDB.Store.Exam_sheetSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Exam_sheet">
+        <PropertyRef Name="Exam_sheet_number" />
+      </Principal>
+      <Dependent Role="Enrollee">
+        <PropertyRef Name="Exam_sheet_Exam_sheet_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Exam_sheetGroup">
+    <End Role="Exam_sheet" Type="AdmissionsCommitteeDB.Store.Exam_sheetSet" Multiplicity="*" />
+    <End Role="Group" Type="AdmissionsCommitteeDB.Store.GroupSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_sheet">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EnrolleeExam_statement">
+    <End Role="Enrollee" Type="AdmissionsCommitteeDB.Store.EnrolleeSet" Multiplicity="*" />
+    <End Role="Exam_statement" Type="AdmissionsCommitteeDB.Store.Exam_statementSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Exam_statement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Enrollee">
+        <PropertyRef Name="Exam_statement_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Exam_statementSubject">
+    <End Role="Exam_statement" Type="AdmissionsCommitteeDB.Store.Exam_statementSet" Multiplicity="1" />
+    <End Role="Subject" Type="AdmissionsCommitteeDB.Store.SubjectSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam_statement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="Exam_statement_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FlowExam_schedule">
+    <End Role="Flow" Type="AdmissionsCommitteeDB.Store.FlowSet" Multiplicity="1" />
+    <End Role="Exam_schedule" Type="AdmissionsCommitteeDB.Store.Exam_scheduleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_schedule">
+        <PropertyRef Name="Flow_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FlowConsultation">
+    <End Role="Flow" Type="AdmissionsCommitteeDB.Store.FlowSet" Multiplicity="1" />
+    <End Role="Consultation" Type="AdmissionsCommitteeDB.Store.ConsultationSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consultation">
+        <PropertyRef Name="Flow_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConsultationSubject">
+    <End Role="Consultation" Type="AdmissionsCommitteeDB.Store.ConsultationSet" Multiplicity="*" />
+    <End Role="Subject" Type="AdmissionsCommitteeDB.Store.SubjectSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consultation">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Exam_scheduleSubject">
+    <End Role="Exam_schedule" Type="AdmissionsCommitteeDB.Store.Exam_scheduleSet" Multiplicity="*" />
+    <End Role="Subject" Type="AdmissionsCommitteeDB.Store.SubjectSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exam_schedule">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AdmissionsCommitteeDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AdmissionsCommitteeDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UniversitySet" EntityType="AdmissionsCommitteeDB.University" />
+          <EntitySet Name="FacultySet" EntityType="AdmissionsCommitteeDB.Faculty" />
+          <EntitySet Name="DepartmentSet" EntityType="AdmissionsCommitteeDB.Department" />
+          <AssociationSet Name="FacultyDepartment" Association="AdmissionsCommitteeDB.FacultyDepartment">
+            <End Role="Faculty" EntitySet="FacultySet" />
+            <End Role="Department" EntitySet="DepartmentSet" />
+          </AssociationSet>
+          <EntitySet Name="FlowSet" EntityType="AdmissionsCommitteeDB.Flow" />
+          <AssociationSet Name="DepartmentFlow" Association="AdmissionsCommitteeDB.DepartmentFlow">
+            <End Role="Department" EntitySet="DepartmentSet" />
+            <End Role="Flow" EntitySet="FlowSet" />
+          </AssociationSet>
+          <EntitySet Name="GroupSet" EntityType="AdmissionsCommitteeDB.Group" />
+          <AssociationSet Name="FlowGroup" Association="AdmissionsCommitteeDB.FlowGroup">
+            <End Role="Flow" EntitySet="FlowSet" />
+            <End Role="Group" EntitySet="GroupSet" />
+          </AssociationSet>
+          <EntitySet Name="EnrolleeSet" EntityType="AdmissionsCommitteeDB.Enrollee" />
+          <EntitySet Name="Exam_sheetSet" EntityType="AdmissionsCommitteeDB.Exam_sheet" />
+          <AssociationSet Name="EnrolleeExam_sheet" Association="AdmissionsCommitteeDB.EnrolleeExam_sheet">
+            <End Role="Enrollee" EntitySet="EnrolleeSet" />
+            <End Role="Exam_sheet" EntitySet="Exam_sheetSet" />
+          </AssociationSet>
+          <AssociationSet Name="Exam_sheetGroup" Association="AdmissionsCommitteeDB.Exam_sheetGroup">
+            <End Role="Exam_sheet" EntitySet="Exam_sheetSet" />
+            <End Role="Group" EntitySet="GroupSet" />
+          </AssociationSet>
+          <EntitySet Name="Exam_statementSet" EntityType="AdmissionsCommitteeDB.Exam_statement" />
+          <AssociationSet Name="EnrolleeExam_statement" Association="AdmissionsCommitteeDB.EnrolleeExam_statement">
+            <End Role="Enrollee" EntitySet="EnrolleeSet" />
+            <End Role="Exam_statement" EntitySet="Exam_statementSet" />
+          </AssociationSet>
+          <EntitySet Name="SubjectSet" EntityType="AdmissionsCommitteeDB.Subject" />
+          <AssociationSet Name="Exam_statementSubject" Association="AdmissionsCommitteeDB.Exam_statementSubject">
+            <End Role="Exam_statement" EntitySet="Exam_statementSet" />
+            <End Role="Subject" EntitySet="SubjectSet" />
+          </AssociationSet>
+          <EntitySet Name="Exam_scheduleSet" EntityType="AdmissionsCommitteeDB.Exam_schedule" />
+          <EntitySet Name="ConsultationSet" EntityType="AdmissionsCommitteeDB.Consultation" />
+          <AssociationSet Name="FlowExam_schedule" Association="AdmissionsCommitteeDB.FlowExam_schedule">
+            <End Role="Flow" EntitySet="FlowSet" />
+            <End Role="Exam_schedule" EntitySet="Exam_scheduleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FlowConsultation" Association="AdmissionsCommitteeDB.FlowConsultation">
+            <End Role="Flow" EntitySet="FlowSet" />
+            <End Role="Consultation" EntitySet="ConsultationSet" />
+          </AssociationSet>
+          <AssociationSet Name="ConsultationSubject" Association="AdmissionsCommitteeDB.ConsultationSubject">
+            <End Role="Consultation" EntitySet="ConsultationSet" />
+            <End Role="Subject" EntitySet="SubjectSet" />
+          </AssociationSet>
+          <AssociationSet Name="Exam_scheduleSubject" Association="AdmissionsCommitteeDB.Exam_scheduleSubject">
+            <End Role="Exam_schedule" EntitySet="Exam_scheduleSet" />
+            <End Role="Subject" EntitySet="SubjectSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="University">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Competition" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="AdmissionsCommitteeDB.FacultyDepartment" FromRole="Faculty" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="AdmissionsCommitteeDB.FacultyDepartment" FromRole="Department" ToRole="Faculty" />
+          <NavigationProperty Name="Flow" Relationship="AdmissionsCommitteeDB.DepartmentFlow" FromRole="Department" ToRole="Flow" />
+        </EntityType>
+        <Association Name="FacultyDepartment">
+          <End Type="AdmissionsCommitteeDB.Faculty" Role="Faculty" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Department" Role="Department" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Flow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="AdmissionsCommitteeDB.DepartmentFlow" FromRole="Flow" ToRole="Department" />
+          <NavigationProperty Name="Group" Relationship="AdmissionsCommitteeDB.FlowGroup" FromRole="Flow" ToRole="Group" />
+          <NavigationProperty Name="Exam_schedule" Relationship="AdmissionsCommitteeDB.FlowExam_schedule" FromRole="Flow" ToRole="Exam_schedule" />
+          <NavigationProperty Name="Consultation" Relationship="AdmissionsCommitteeDB.FlowConsultation" FromRole="Flow" ToRole="Consultation" />
+        </EntityType>
+        <Association Name="DepartmentFlow">
+          <End Type="AdmissionsCommitteeDB.Department" Role="Department" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Flow" Role="Flow" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Flow" Relationship="AdmissionsCommitteeDB.FlowGroup" FromRole="Group" ToRole="Flow" />
+          <NavigationProperty Name="Exam_sheet" Relationship="AdmissionsCommitteeDB.Exam_sheetGroup" FromRole="Group" ToRole="Exam_sheet" />
+        </EntityType>
+        <Association Name="FlowGroup">
+          <End Type="AdmissionsCommitteeDB.Flow" Role="Flow" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Group" Role="Group" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Enrollee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Lastname" Type="String" Nullable="true" />
+          <Property Name="Passport" Type="String" Nullable="false" />
+          <Property Name="Education" Type="String" Nullable="false" />
+          <Property Name="Graduation" Type="DateTime" Nullable="false" />
+          <Property Name="Golden_medal" Type="Boolean" Nullable="false" />
+          <Property Name="Silver_medal" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Exam_sheet" Relationship="AdmissionsCommitteeDB.EnrolleeExam_sheet" FromRole="Enrollee" ToRole="Exam_sheet" />
+          <NavigationProperty Name="Exam_statement" Relationship="AdmissionsCommitteeDB.EnrolleeExam_statement" FromRole="Enrollee" ToRole="Exam_statement" />
+        </EntityType>
+        <EntityType Name="Exam_sheet">
+          <Key>
+            <PropertyRef Name="Exam_sheet_number" />
+          </Key>
+          <Property Name="Exam_sheet_number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Enrollee" Relationship="AdmissionsCommitteeDB.EnrolleeExam_sheet" FromRole="Exam_sheet" ToRole="Enrollee" />
+          <NavigationProperty Name="Group" Relationship="AdmissionsCommitteeDB.Exam_sheetGroup" FromRole="Exam_sheet" ToRole="Group" />
+        </EntityType>
+        <Association Name="EnrolleeExam_sheet">
+          <End Type="AdmissionsCommitteeDB.Enrollee" Role="Enrollee" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Exam_sheet" Role="Exam_sheet" Multiplicity="1" />
+        </Association>
+        <Association Name="Exam_sheetGroup">
+          <End Type="AdmissionsCommitteeDB.Exam_sheet" Role="Exam_sheet" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Group" Role="Group" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Exam_statement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark" Type="Byte" Nullable="false" />
+          <Property Name="Points" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Enrollee" Relationship="AdmissionsCommitteeDB.EnrolleeExam_statement" FromRole="Exam_statement" ToRole="Enrollee" />
+          <NavigationProperty Name="Subject" Relationship="AdmissionsCommitteeDB.Exam_statementSubject" FromRole="Exam_statement" ToRole="Subject" />
+        </EntityType>
+        <Association Name="EnrolleeExam_statement">
+          <End Type="AdmissionsCommitteeDB.Enrollee" Role="Enrollee" Multiplicity="*" />
+          <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Pass_points" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Exam_statement" Relationship="AdmissionsCommitteeDB.Exam_statementSubject" FromRole="Subject" ToRole="Exam_statement" />
+          <NavigationProperty Name="Consultation" Relationship="AdmissionsCommitteeDB.ConsultationSubject" FromRole="Subject" ToRole="Consultation" />
+          <NavigationProperty Name="Exam_schedule" Relationship="AdmissionsCommitteeDB.Exam_scheduleSubject" FromRole="Subject" ToRole="Exam_schedule" />
+        </EntityType>
+        <Association Name="Exam_statementSubject">
+          <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Subject" Role="Subject" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Exam_schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Classroom" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Flow" Relationship="AdmissionsCommitteeDB.FlowExam_schedule" FromRole="Exam_schedule" ToRole="Flow" />
+          <NavigationProperty Name="Subject" Relationship="AdmissionsCommitteeDB.Exam_scheduleSubject" FromRole="Exam_schedule" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Consultation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Classroom" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Flow" Relationship="AdmissionsCommitteeDB.FlowConsultation" FromRole="Consultation" ToRole="Flow" />
+          <NavigationProperty Name="Subject" Relationship="AdmissionsCommitteeDB.ConsultationSubject" FromRole="Consultation" ToRole="Subject" />
+        </EntityType>
+        <Association Name="FlowExam_schedule">
+          <End Type="AdmissionsCommitteeDB.Flow" Role="Flow" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Exam_schedule" Role="Exam_schedule" Multiplicity="*" />
+        </Association>
+        <Association Name="FlowConsultation">
+          <End Type="AdmissionsCommitteeDB.Flow" Role="Flow" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Consultation" Role="Consultation" Multiplicity="*" />
+        </Association>
+        <Association Name="ConsultationSubject">
+          <End Type="AdmissionsCommitteeDB.Consultation" Role="Consultation" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Subject" Role="Subject" Multiplicity="1" />
+        </Association>
+        <Association Name="Exam_scheduleSubject">
+          <End Type="AdmissionsCommitteeDB.Exam_schedule" Role="Exam_schedule" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Subject" Role="Subject" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdmissionsCommitteeDBStoreContainer" CdmEntityContainer="AdmissionsCommitteeDBContainer">
+    <EntitySetMapping Name="UniversitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.University)">
+        <MappingFragment StoreEntitySet="UniversitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacultySet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Faculty)">
+        <MappingFragment StoreEntitySet="FacultySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Competition" ColumnName="Competition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Department)">
+        <MappingFragment StoreEntitySet="DepartmentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlowSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Flow)">
+        <MappingFragment StoreEntitySet="FlowSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Group)">
+        <MappingFragment StoreEntitySet="GroupSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnrolleeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Enrollee)">
+        <MappingFragment StoreEntitySet="EnrolleeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="Golden_medal" ColumnName="Golden_medal" />
+          <ScalarProperty Name="Silver_medal" ColumnName="Silver_medal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_sheetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Exam_sheet)">
+        <MappingFragment StoreEntitySet="Exam_sheetSet">
+          <ScalarProperty Name="Exam_sheet_number" ColumnName="Exam_sheet_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_statementSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Exam_statement)">
+        <MappingFragment StoreEntitySet="Exam_statementSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Subject)">
+        <MappingFragment StoreEntitySet="SubjectSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pass_points" ColumnName="Pass_points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exam_scheduleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Exam_schedule)">
+        <MappingFragment StoreEntitySet="Exam_scheduleSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Consultation)">
+        <MappingFragment StoreEntitySet="ConsultationSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FacultyDepartment" TypeName="AdmissionsCommitteeDB.FacultyDepartment" StoreEntitySet="DepartmentSet">
+      <EndProperty Name="Faculty">
+        <ScalarProperty Name="Id" ColumnName="Faculty_Id" />
+      </EndProperty>
+      <EndProperty Name="Department">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DepartmentFlow" TypeName="AdmissionsCommitteeDB.DepartmentFlow" StoreEntitySet="FlowSet">
+      <EndProperty Name="Department">
+        <ScalarProperty Name="Id" ColumnName="Department_Id" />
+      </EndProperty>
+      <EndProperty Name="Flow">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FlowGroup" TypeName="AdmissionsCommitteeDB.FlowGroup" StoreEntitySet="GroupSet">
+      <EndProperty Name="Flow">
+        <ScalarProperty Name="Id" ColumnName="Flow_Id" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EnrolleeExam_sheet" TypeName="AdmissionsCommitteeDB.EnrolleeExam_sheet" StoreEntitySet="EnrolleeSet">
+      <EndProperty Name="Exam_sheet">
+        <ScalarProperty Name="Exam_sheet_number" ColumnName="Exam_sheet_Exam_sheet_number" />
+      </EndProperty>
+      <EndProperty Name="Enrollee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Exam_sheetGroup" TypeName="AdmissionsCommitteeDB.Exam_sheetGroup" StoreEntitySet="Exam_sheetSet">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="Exam_sheet">
+        <ScalarProperty Name="Exam_sheet_number" ColumnName="Exam_sheet_number" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EnrolleeExam_statement" TypeName="AdmissionsCommitteeDB.EnrolleeExam_statement" StoreEntitySet="EnrolleeSet">
+      <EndProperty Name="Exam_statement">
+        <ScalarProperty Name="Id" ColumnName="Exam_statement_Id" />
+      </EndProperty>
+      <EndProperty Name="Enrollee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Exam_statementSubject" TypeName="AdmissionsCommitteeDB.Exam_statementSubject" StoreEntitySet="SubjectSet">
+      <EndProperty Name="Exam_statement">
+        <ScalarProperty Name="Id" ColumnName="Exam_statement_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FlowExam_schedule" TypeName="AdmissionsCommitteeDB.FlowExam_schedule" StoreEntitySet="Exam_scheduleSet">
+      <EndProperty Name="Flow">
+        <ScalarProperty Name="Id" ColumnName="Flow_Id" />
+      </EndProperty>
+      <EndProperty Name="Exam_schedule">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FlowConsultation" TypeName="AdmissionsCommitteeDB.FlowConsultation" StoreEntitySet="ConsultationSet">
+      <EndProperty Name="Flow">
+        <ScalarProperty Name="Id" ColumnName="Flow_Id" />
+      </EndProperty>
+      <EndProperty Name="Consultation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ConsultationSubject" TypeName="AdmissionsCommitteeDB.ConsultationSubject" StoreEntitySet="ConsultationSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Consultation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Exam_scheduleSubject" TypeName="AdmissionsCommitteeDB.Exam_scheduleSubject" StoreEntitySet="Exam_scheduleSet">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Exam_schedule">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
