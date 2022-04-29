@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ec8ffb0d2be4721a66d5ba5854a13d9" Name="Diagram1" ZoomLevel="77" >
+      <Diagram DiagramId="3ec8ffb0d2be4721a66d5ba5854a13d9" Name="Diagram1" ZoomLevel="63" >
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.University" Width="1.5" PointX="1.625" PointY="1.375" FillColor="Teal" />
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.Faculty" Width="1.5" PointX="4.125" PointY="2.125" FillColor="Cyan" />
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.Department" Width="1.5" PointX="6.375" PointY="2" FillColor="Cyan" />
@@ -27,6 +27,7 @@
         <AssociationConnector Association="AdmissionsCommitteeDB.FlowConsultation" />
         <AssociationConnector Association="AdmissionsCommitteeDB.ConsultationSubject" />
         <AssociationConnector Association="AdmissionsCommitteeDB.Exam_scheduleSubject" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.User" Width="1.5" PointX="1.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

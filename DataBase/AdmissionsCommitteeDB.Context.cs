@@ -36,5 +36,6 @@ namespace AdmissionsCommittee.DataBase
         public virtual DbSet<Subject> SubjectSet { get; set; }
         public virtual DbSet<Exam_schedule> Exam_scheduleSet { get; set; }
         public virtual DbSet<Consultation> ConsultationSet { get; set; }
+        public virtual DbSet<User> UserSet { get; set; }
     }
 }

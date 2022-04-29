@@ -64,6 +64,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abstract\BaseViewModel.cs" />
+    <Compile Include="Abstract\EntityViewModel.cs" />
+    <Compile Include="Abstract\RelayCommand.cs" />
+    <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
+    <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
+    <Compile Include="View\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserCreateWindow.xaml.cs">
+      <DependentUpon>UserCreateWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,10 +131,21 @@
     <Compile Include="DataBase\University.cs">
       <DependentUpon>AdmissionsCommitteeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\User.cs">
+      <DependentUpon>AdmissionsCommitteeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserCreateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -175,5 +197,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
