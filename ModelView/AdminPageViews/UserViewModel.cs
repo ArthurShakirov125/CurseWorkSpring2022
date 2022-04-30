@@ -14,6 +14,10 @@ namespace AdmissionsCommittee.ModelView
         {
         }
 
+        public User User
+        {
+            get { return _model; }
+        }
 
 
         public string Login
@@ -35,6 +39,5 @@ namespace AdmissionsCommittee.ModelView
                 OnPropertyChanged();
             }
         }
-
     }
 }

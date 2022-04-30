@@ -26,10 +26,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView SelectedItem="{Binding SelectedUser}"  ItemsSource="{Binding Users}" Grid.Column="0">
+        <ListView ItemsSource="{Binding Users}" Grid.Column="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="User" DisplayMemberBinding="{Binding Path=Login}"></GridViewColumn>
+                    <GridViewColumn Width="200"  Header="User" DisplayMemberBinding="{Binding Path=Login}"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

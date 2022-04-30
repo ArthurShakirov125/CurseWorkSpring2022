@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.Abstract
 {
-    public class EntityViewModel<T> : BaseViewModel where T : class, new()
+    public class EntityViewModel<T> : BaseViewModel
     {
         protected T _model;
 

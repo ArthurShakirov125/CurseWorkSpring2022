@@ -32,7 +32,6 @@ namespace AdmissionsCommittee.View
             InitializeComponent();
             this.usersViewModel = usersViewModel;
             DataContext = usersViewModel;
-
         }
     }
 }

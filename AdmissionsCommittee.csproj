@@ -69,6 +69,7 @@
     <Compile Include="Abstract\RelayCommand.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
+    <Compile Include="Security\Securitytron.cs" />
     <Compile Include="View\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
