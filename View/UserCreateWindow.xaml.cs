@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdmissionsCommittee.ModelView.AdminPageViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace AdmissionsCommittee.View
     /// </summary>
     public partial class UserCreateWindow : Window
     {
+        private UsersViewModel usersViewModel;
+
         public UserCreateWindow()
         {
             InitializeComponent();
+        }
+
+        public UserCreateWindow(UsersViewModel usersViewModel)
+        {
+            InitializeComponent();
+            this.usersViewModel = usersViewModel;
+            DataContext = usersViewModel;
+
         }
     }
 }

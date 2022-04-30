@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdmissionsCommittee.View"
+        xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.AdminPageViews" 
+        d:DataContext="{d:DesignInstance Type=viewModel:UsersViewModel}"
         mc:Ignorable="d"
         Title="UserCreateWindow" Height="450" Width="450">
     <Window.Resources>
@@ -27,11 +29,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource textForForm}" Text="Login" Grid.Row="1"></TextBlock>
-        <TextBox Style="{StaticResource textForForm}" Grid.Row="2"></TextBox>
+        <TextBox Style="{StaticResource textForForm}" Text="{Binding NewUser.Login}" Grid.Row="2"></TextBox>
         <TextBlock Style="{StaticResource textForForm}" Grid.Row="3" Text="Password"></TextBlock>
-        <TextBox Style="{StaticResource textForForm}" Grid.Row="4"></TextBox>
+        <TextBox Style="{StaticResource textForForm}" Text="{Binding NewUser.Password}" Grid.Row="4"></TextBox>
         <TextBlock Style="{StaticResource textForForm}" Grid.Row="5" Text="Confirm Password"></TextBlock>
-        <TextBox Style="{StaticResource textForForm}" Grid.Row="6"></TextBox>
-        <Button Grid.Row="7" Content="Create new User" Width="200" Height="40"></Button>
+        <TextBox Style="{StaticResource textForForm}" Text="{Binding NewUser.Password}" Grid.Row="6"></TextBox>
+        <Button Grid.Row="7" Content="Create new User" Command="{Binding CreateNewUser}" Width="200" Height="40"></Button>
     </Grid>
 </Window>

@@ -14,6 +14,8 @@ namespace AdmissionsCommittee.ModelView
         {
         }
 
+
+
         public string Login
         {
             get { return _model.Login; }

@@ -21,16 +21,19 @@ namespace AdmissionsCommittee.View
     /// </summary>
     public partial class AdminPage : Page
     {
+        protected UsersViewModel usersViewModel;
         protected UserCreateWindow _createWindow;
         public AdminPage()
         {
             InitializeComponent();
-            DataContext = new UsersViewModel();
+            
+            usersViewModel = new UsersViewModel();
+            this.DataContext = usersViewModel;
         }
 
         private void CreateNewUser(object sender, RoutedEventArgs e)
         {
-            _createWindow = new UserCreateWindow();
+            _createWindow = new UserCreateWindow(usersViewModel);
             _createWindow.Show();
         }
     }
