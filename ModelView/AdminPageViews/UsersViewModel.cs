@@ -13,6 +13,9 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
     public class UsersViewModel : BaseViewModel
     {
         protected RelayCommand createNewUser;
+        protected RelayCommand redactNewUser;
+        protected RelayCommand takeSelectedUser;
+        protected RelayCommand deleteSelectedUser;
 
         protected List<User> rawUsers { get; set; }
 
@@ -41,6 +44,11 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
         }
 
         protected UserViewModel _newUser;
+
+        private string _selectedUserLogin;
+
+        public string Password { get; set; }
+
         public UserViewModel NewUser
         {
             get { return _newUser; }
@@ -52,6 +60,8 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
         }
 
         private AdmissionsCommitteeDBContainer _db;
+        
+
         public UsersViewModel()
         {
             _db = new AdmissionsCommitteeDBContainer();
@@ -74,8 +84,53 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                     (createNewUser = new RelayCommand(AddUser));
             }
         }
+        public RelayCommand RedactNewUser
+        {
+            get
+            {
+                return redactNewUser ??
+                    (redactNewUser = new RelayCommand(RedactUser));
+            }
+        }
+        public RelayCommand DeleteSelectedUser
+        {
+            get
+            {
+                return deleteSelectedUser ??
+                    (deleteSelectedUser = new RelayCommand(DeleteUser));
+            }
+        }
+        public RelayCommand TakeSelectedUser
+        {
+            get
+            {
+                return takeSelectedUser ??
+                    (takeSelectedUser = new RelayCommand(takeUser));
+            }
+        }
+        private void DeleteUser(object obj)
+        {
+            _db.UserSet.Remove(SelectedUser.User);
+            Users = Users.Where(u => u.Login != SelectedUser.Login);
+            _db.SaveChanges();
+        }
 
-        public void AddUser(object obj)
+        private void takeUser(object obj)
+        {
+            _selectedUserLogin = SelectedUser.Login;
+        }
+
+        private void RedactUser(object obj)
+        {
+            User user = _db.UserSet.Where(u => u.Login == _selectedUserLogin).First();
+            user.Login = SelectedUser.Login;
+            user.Password = Securitytron.MadeHashCode(Password);
+            Password = "";
+            _db.SaveChanges();
+            MessageBox.Show("Изменение произведено успешно");
+        }
+
+        private void AddUser(object obj)
         {
             if (Users.Any(user => user.Login == NewUser.Login))
             {
@@ -95,5 +150,6 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                 MessageBox.Show("Пользователь добавлен успешно");
             }
         }
+
     }
 }

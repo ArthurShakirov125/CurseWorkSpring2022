@@ -76,6 +76,9 @@
     <Compile Include="View\UserCreateWindow.xaml.cs">
       <DependentUpon>UserCreateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserRedactWindow.xaml.cs">
+      <DependentUpon>UserRedactWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserCreateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserRedactWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

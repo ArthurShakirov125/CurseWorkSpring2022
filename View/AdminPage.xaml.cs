@@ -23,6 +23,7 @@ namespace AdmissionsCommittee.View
     {
         protected UsersViewModel usersViewModel;
         protected UserCreateWindow _createWindow;
+        protected UserRedactWindow _redactWindow;
         public AdminPage()
         {
             InitializeComponent();
@@ -35,6 +36,12 @@ namespace AdmissionsCommittee.View
         {
             _createWindow = new UserCreateWindow(usersViewModel);
             _createWindow.Show();
+        }
+
+        private void ReadactSelectedUser(object sender, RoutedEventArgs e)
+        {
+            _redactWindow = new UserRedactWindow(usersViewModel);
+            _redactWindow.Show();
         }
     }
 }
