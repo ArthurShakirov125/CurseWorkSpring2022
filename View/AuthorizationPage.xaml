@@ -1,0 +1,22 @@
+﻿<Page x:Class="AdmissionsCommittee.View.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdmissionsCommittee.View"
+      xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.AdminPageViews" 
+      d:DataContext="{d:DesignInstance Type=viewModel:Authorization}"
+      mc:Ignorable="d" 
+      d:DesignHeight="760" d:DesignWidth="1080"
+      Title="AuthorizationPage">
+
+    <Grid Margin="0,0,0,100">
+        <StackPanel Width="500" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="200">
+            <TextBlock Height="30" VerticalAlignment="Bottom" FontSize="16" Margin="5,0,0,0">Login</TextBlock>
+            <TextBox Height="20" Margin="0,0,0,20" Text="{Binding User.Login}"></TextBox>
+            <TextBlock HorizontalAlignment="Stretch" Height="30" FontSize="16" VerticalAlignment="Stretch" Margin="5,0,0,0">Password</TextBlock>
+            <TextBox Height="20" Text="{Binding User.Password}"></TextBox>
+            <Button Content="Confirm" Height="20" Width="250" Margin="0,20,0,0" Command="{Binding TryTo}" ></Button>
+        </StackPanel>
+    </Grid>
+</Page>

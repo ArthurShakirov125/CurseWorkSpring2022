@@ -67,11 +67,15 @@
     <Compile Include="Abstract\BaseViewModel.cs" />
     <Compile Include="Abstract\EntityViewModel.cs" />
     <Compile Include="Abstract\RelayCommand.cs" />
+    <Compile Include="ModelView\AdminPageViews\Authorization.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
     <Compile Include="Security\Securitytron.cs" />
     <Compile Include="View\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AuthorizationPage.xaml.cs">
+      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserCreateWindow.xaml.cs">
       <DependentUpon>UserCreateWindow.xaml</DependentUpon>
@@ -143,6 +147,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

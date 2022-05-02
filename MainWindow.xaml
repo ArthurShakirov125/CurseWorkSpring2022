@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdmissionsCommittee"
         mc:Ignorable="d"
-        Source="View/AdminPage.xaml"
+        Source="View/AuthorizationPage.xaml"
         ShowsNavigationUI="False"
         Title="MainWindow" Height="760" Width="1080">
 </NavigationWindow>
