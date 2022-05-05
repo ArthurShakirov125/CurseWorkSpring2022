@@ -1,7 +1,4 @@
-﻿using AdmissionsCommittee.DataBase;
-using AdmissionsCommittee.ModelView;
-using AdmissionsCommittee.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,18 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdmissionsCommittee
+namespace AdmissionsCommittee.ModelView
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        private NavigationService _navigationService;
+
+        public MainPage(NavigationService navigationService)
         {
             InitializeComponent();
-            AuthorizationPage Page = new AuthorizationPage(this.NavigationService);
-            NavigationService.Navigate(Page);
+            _navigationService = navigationService;
         }
     }
 }

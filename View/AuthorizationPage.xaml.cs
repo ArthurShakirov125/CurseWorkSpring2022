@@ -1,4 +1,5 @@
-﻿using AdmissionsCommittee.ModelView.AdminPageViews;
+﻿using AdmissionsCommittee.ModelView;
+using AdmissionsCommittee.ModelView.AdminPageViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,14 @@ namespace AdmissionsCommittee.View
     /// </summary>
     public partial class AuthorizationPage : Page
     {
-        public AuthorizationPage()
+        private NavigationService _navigationService;
+
+        public AuthorizationPage(NavigationService navigationService)
         {
             InitializeComponent();
-            DataContext = new Authorization();
+            this._navigationService = navigationService;
+            DataContext = new Authorization(_navigationService);
+            
         }
     }
 }

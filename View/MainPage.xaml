@@ -1,0 +1,46 @@
+﻿<Page x:Class="AdmissionsCommittee.ModelView.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdmissionsCommittee.ModelView"
+      mc:Ignorable="d" 
+      d:DesignHeight="760" d:DesignWidth="1080"
+      Title="MainPage">
+    <Page.Resources>
+        <Style x:Key="tileBtns">
+            <Setter Property="ItemsControl.Padding" Value="10,0,10,0"></Setter>
+        </Style>
+        <Style x:Key="bigBtns">
+            <Setter Property="ItemsControl.Padding" Value="0,14,0,14"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="12"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="22*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <Button Style="{StaticResource tileBtns}" Content="Абитуриенты"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Экзамены"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Консультации"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Потоки"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Группы"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Факультеты"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Кафедры"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Предметы"></Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационный лист"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационную ведомость"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Составить списки на зачесление"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

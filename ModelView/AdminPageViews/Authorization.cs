@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace AdmissionsCommittee.ModelView.AdminPageViews
 {
@@ -32,16 +33,16 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                 string pass = Securitytron.MadeHashCode(User.Password);
                 if(user.Password == pass)
                 {
-                    MessageBox.Show("KEKW YOU GENIUS");
+                    _navigationService.Navigate(new MainPage(_navigationService));
                 }
                 else
                 {
-                    MessageBox.Show("YUO STUPID");
+                    MessageBox.Show("Неправильный пароль");
                 }
             }
             else
             {
-                MessageBox.Show("YUO STUPID");
+                MessageBox.Show("Неправильное имя пользователя");
             }
         }
 
@@ -59,11 +60,15 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 
         protected AdmissionsCommitteeDBContainer _db;
         protected DbSet<User> UserSet;
-        public Authorization()
+        private NavigationService _navigationService;
+
+
+        public Authorization(NavigationService navigationService)
         {
             _user = new UserViewModel(new User());
             _db = new AdmissionsCommitteeDBContainer();
             UserSet = _db.UserSet;
+            _navigationService = navigationService;
         }
     }
 }
