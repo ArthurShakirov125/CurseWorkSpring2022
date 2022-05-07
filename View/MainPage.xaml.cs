@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdmissionsCommittee.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,12 @@ namespace AdmissionsCommittee.ModelView
         {
             InitializeComponent();
             _navigationService = navigationService;
+        }
+
+        private void ToEnrollePage(object sender, RoutedEventArgs e)
+        {
+            EnrollePage page = new EnrollePage();
+            _navigationService.Navigate(page);
         }
     }
 }

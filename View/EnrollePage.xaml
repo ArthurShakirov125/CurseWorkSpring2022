@@ -1,12 +1,15 @@
-﻿<Page x:Class="AdmissionsCommittee.ModelView.MainPage"
+﻿<Page x:Class="AdmissionsCommittee.View.EnrollePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AdmissionsCommittee.ModelView"
+      xmlns:local="clr-namespace:AdmissionsCommittee.View"
+      xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
+      d:DataContext="{d:DesignInstance Type=viewModel:EnrollesModelView}"
       mc:Ignorable="d" 
       d:DesignHeight="760" d:DesignWidth="1080"
-      Title="MainPage">
+      Title="EnrollePage">
+
     <Page.Resources>
         <Style x:Key="tileBtns">
             <Setter Property="ItemsControl.Padding" Value="10,0,10,0"></Setter>
@@ -27,7 +30,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-            <Button Style="{StaticResource tileBtns}" Click="ToEnrollePage" Content="Абитуриенты"></Button>
+            <Button Style="{StaticResource tileBtns}" Content="Абитуриенты"></Button>
             <Button Style="{StaticResource tileBtns}" Content="Экзамены"></Button>
             <Button Style="{StaticResource tileBtns}" Content="Консультации"></Button>
             <Button Style="{StaticResource tileBtns}" Content="Потоки"></Button>
@@ -36,6 +39,23 @@
             <Button Style="{StaticResource tileBtns}" Content="Кафедры"></Button>
             <Button Style="{StaticResource tileBtns}" Content="Предметы"></Button>
         </StackPanel>
+
+        <ListView SelectedItem="{Binding SelectedEnrolle}" ItemsSource="{Binding EnrolleModles}" Grid.Column="0" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleName}"></GridViewColumn>
+                    <GridViewColumn Header="Фамилия" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleSurename}"></GridViewColumn>
+                    <GridViewColumn Header="Отчество" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleLastname}"></GridViewColumn>
+                    <GridViewColumn Header="Поток" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleFlow}"></GridViewColumn>
+                    <GridViewColumn Header="Группа" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGroup}"></GridViewColumn>
+                    <GridViewColumn Header="Паспорт" Width="Auto" DisplayMemberBinding="{Binding Path=EnrollePassport}"></GridViewColumn>
+                    <GridViewColumn Header="Учебное заведение" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleEducation}"></GridViewColumn>
+                    <GridViewColumn Header="Дата выпуска" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGraduation}"></GridViewColumn>
+                    <GridViewColumn Header="Золотая медаль" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGoldenMedal}"></GridViewColumn>
+                    <GridViewColumn Header="Серебрянная медаль" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleSilverMedal}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
             <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационный лист"></Button>
