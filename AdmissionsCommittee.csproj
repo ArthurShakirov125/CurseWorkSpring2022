@@ -70,18 +70,26 @@
     <Compile Include="ModelView\AdminPageViews\Authorization.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
+    <Compile Include="ModelView\MainView\ConsultationModelView.cs" />
+    <Compile Include="ModelView\MainView\ConsultationSetModelView.cs" />
     <Compile Include="ModelView\MainView\DepartmentModelView.cs" />
     <Compile Include="ModelView\MainView\DepartmentSetModelView.cs" />
     <Compile Include="ModelView\MainView\EnrolleModleView.cs" />
     <Compile Include="ModelView\MainView\EnrollesModelView.cs" />
+    <Compile Include="ModelView\MainView\ExamModelView.cs" />
+    <Compile Include="ModelView\MainView\ExamSetModelView.cs" />
     <Compile Include="ModelView\MainView\ExamSheetModleView.cs" />
     <Compile Include="ModelView\MainView\ExamSheetsModleView.cs" />
+    <Compile Include="ModelView\MainView\ExamStatementSetViewModel.cs" />
+    <Compile Include="ModelView\MainView\ExamStatementViewModel.cs" />
     <Compile Include="ModelView\MainView\FacultyModelView.cs" />
     <Compile Include="ModelView\MainView\FacultySetModelView.cs" />
     <Compile Include="ModelView\MainView\FlowModleView.cs" />
     <Compile Include="ModelView\MainView\FlowSetModleView.cs" />
     <Compile Include="ModelView\MainView\GroupModelView.cs" />
     <Compile Include="ModelView\MainView\GroupSetModelView.cs" />
+    <Compile Include="ModelView\MainView\SubjectModelView.cs" />
+    <Compile Include="ModelView\MainView\SubjectSetModelView.cs" />
     <Compile Include="View\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
     </Compile>

@@ -466,7 +466,7 @@
           <NavigationProperty Name="Subject" Relationship="AdmissionsCommitteeDB.Exam_statementSubject" FromRole="Exam_statement" ToRole="Subject" />
         </EntityType>
         <Association Name="EnrolleeExam_statement">
-          <End Type="AdmissionsCommitteeDB.Enrollee" Role="Enrollee" Multiplicity="*" />
+          <End Type="AdmissionsCommitteeDB.Enrollee" Role="Enrollee" Multiplicity="1" />
           <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
         </Association>
         <EntityType Name="Subject">
@@ -482,7 +482,7 @@
         </EntityType>
         <Association Name="Exam_statementSubject">
           <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
-          <End Type="AdmissionsCommitteeDB.Subject" Role="Subject" Multiplicity="*" />
+          <End Type="AdmissionsCommitteeDB.Subject" Role="Subject" Multiplicity="1" />
         </Association>
         <EntityType Name="Exam_schedule">
           <Key>
