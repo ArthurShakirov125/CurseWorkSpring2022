@@ -64,14 +64,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Abstract\BaseViewModel.cs" />
-    <Compile Include="Abstract\EntityViewModel.cs" />
+    <Compile Include="Abstract\BaseModelView.cs" />
+    <Compile Include="Abstract\EntityModelView.cs" />
     <Compile Include="Abstract\RelayCommand.cs" />
     <Compile Include="ModelView\AdminPageViews\Authorization.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
+    <Compile Include="ModelView\MainView\DepartmentModelView.cs" />
+    <Compile Include="ModelView\MainView\DepartmentSetModelView.cs" />
     <Compile Include="ModelView\MainView\EnrolleModleView.cs" />
     <Compile Include="ModelView\MainView\EnrollesModelView.cs" />
+    <Compile Include="ModelView\MainView\ExamSheetModleView.cs" />
+    <Compile Include="ModelView\MainView\ExamSheetsModleView.cs" />
+    <Compile Include="ModelView\MainView\FacultyModelView.cs" />
+    <Compile Include="ModelView\MainView\FacultySetModelView.cs" />
+    <Compile Include="ModelView\MainView\FlowModleView.cs" />
+    <Compile Include="ModelView\MainView\FlowSetModleView.cs" />
+    <Compile Include="ModelView\MainView\GroupModelView.cs" />
+    <Compile Include="ModelView\MainView\GroupSetModelView.cs" />
     <Compile Include="View\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
     </Compile>

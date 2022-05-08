@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.Abstract
 {
-    public class EntityViewModel<T> : BaseViewModel
+    public class EntityModelView<T> : BaseModelView
     {
         protected T _model;
 
-        public EntityViewModel(T model)
+        public EntityModelView(T model)
         {
             this._model = model;
+            _db = new DataBase.AdmissionsCommitteeDBContainer();
         }
 
     }

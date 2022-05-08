@@ -12,7 +12,7 @@ using System.Windows.Navigation;
 
 namespace AdmissionsCommittee.ModelView.AdminPageViews
 {
-    public class Authorization : BaseViewModel
+    public class Authorization : BaseModelView
     {
         protected RelayCommand _authorizationCommand;
 
@@ -57,8 +57,6 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                 OnPropertyChanged();
             }
         }
-
-        protected AdmissionsCommitteeDBContainer _db;
         protected DbSet<User> UserSet;
         private NavigationService _navigationService;
 

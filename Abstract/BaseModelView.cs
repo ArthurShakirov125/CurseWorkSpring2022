@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdmissionsCommittee.DataBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.Abstract
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseModelView : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected AdmissionsCommitteeDBContainer _db;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

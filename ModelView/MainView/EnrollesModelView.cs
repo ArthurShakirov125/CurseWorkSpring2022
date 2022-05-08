@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class EnrollesModelView : BaseViewModel
+    public class EnrollesModelView : BaseModelView
     {
-        private AdmissionsCommitteeDBContainer _db;
         public EnrollesModelView()
         {
             _db = new AdmissionsCommitteeDBContainer();

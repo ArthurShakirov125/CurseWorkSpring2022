@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView
 {
-    public class UserViewModel : EntityViewModel<User>
+    public class UserViewModel : EntityModelView<User>
     {
         public UserViewModel(User model) : base(model)
         {

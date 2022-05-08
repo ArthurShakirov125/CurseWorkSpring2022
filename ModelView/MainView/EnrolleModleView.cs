@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class EnrolleModleView : EntityViewModel<Enrollee>
+    public class EnrolleModleView : EntityModelView<Enrollee>
     {
         public EnrolleModleView(Enrollee model) : base(model)
         {
@@ -105,7 +105,10 @@ namespace AdmissionsCommittee.ModelView.MainView
             get { return _model.Exam_sheet.Group.Flow.Name; }
             set
             {
-                _model.Exam_sheet.Group.Flow.Name = value;
+                var flow = _db.FlowSet.Where(f => f.Name == value).First();
+
+                _model.Exam_sheet.Group.Flow = flow;
+                _db.SaveChanges();
                 OnPropertyChanged();
             }
         }
@@ -115,7 +118,10 @@ namespace AdmissionsCommittee.ModelView.MainView
             get { return _model.Exam_sheet.Group.Name; }
             set
             {
-                _model.Exam_sheet.Group.Name = value;
+                var group = _db.GroupSet.Where(g => g.Name == value).First();
+
+                _model.Exam_sheet.Group = group;
+                _db.SaveChanges();
                 OnPropertyChanged();
             }
         }

@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace AdmissionsCommittee.ModelView.AdminPageViews
 {
-    public class UsersViewModel : BaseViewModel
+    public class UsersViewModel : BaseModelView
     {
         protected RelayCommand createNewUser;
         protected RelayCommand redactNewUser;
@@ -58,8 +58,6 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                 OnPropertyChanged();
             }
         }
-
-        private AdmissionsCommitteeDBContainer _db;
         
 
         public UsersViewModel()
