@@ -68,6 +68,7 @@
     <Compile Include="Abstract\EntityModelView.cs" />
     <Compile Include="Abstract\RelayCommand.cs" />
     <Compile Include="ModelView\AdminPageViews\Authorization.cs" />
+    <Compile Include="ModelView\AdminPageViews\UniversityModelView.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
     <Compile Include="ModelView\MainView\ConsultationModelView.cs" />
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="View\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RedactEnrolleWindow.xaml.cs">
+      <DependentUpon>RedactEnrolleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserCreateWindow.xaml.cs">
       <DependentUpon>UserCreateWindow.xaml</DependentUpon>
@@ -185,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RedactEnrolleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

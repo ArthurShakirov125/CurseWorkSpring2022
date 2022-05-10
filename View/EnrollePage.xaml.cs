@@ -21,10 +21,23 @@ namespace AdmissionsCommittee.View
     /// </summary>
     public partial class EnrollePage : Page
     {
-        public EnrollePage()
+        private NavigationService _navigationService;
+        private EnrollesModelView enrollesModelView;
+
+        public EnrollePage(NavigationService navigationService)
         {
             InitializeComponent();
-            DataContext = new EnrollesModelView();
+            enrollesModelView = new EnrollesModelView();
+            DataContext = enrollesModelView;
+            this._navigationService = navigationService;
+        }
+
+        private void Redact(object sender, RoutedEventArgs e)
+        {
+            var win = new RedactEnrolleWindow();
+            enrollesModelView.initializeDates();
+            win.DataContext = enrollesModelView;
+            win.Show();
         }
     }
 }

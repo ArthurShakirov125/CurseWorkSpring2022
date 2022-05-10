@@ -72,12 +72,17 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         public string EnrolleGraduation
         {
-            get { return _model.Graduation.ToString("dd:mm:yyyy"); }
+            get { return _model.Graduation.ToString("dd:MM:yyyy"); }
             set
             {
                 _model.Graduation = DateTime.Parse(value);
                 OnPropertyChanged();
             }
+        }
+
+        public DateTime EnrolleGraduationDateTime
+        {
+            get { return _model.Graduation; }
         }
 
         public bool EnrolleGoldenMedal

@@ -31,7 +31,7 @@ namespace AdmissionsCommittee.ModelView
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
         {
-            EnrollePage page = new EnrollePage();
+            EnrollePage page = new EnrollePage(_navigationService);
             _navigationService.Navigate(page);
         }
     }
