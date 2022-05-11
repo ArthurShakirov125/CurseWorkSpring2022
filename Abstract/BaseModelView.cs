@@ -15,6 +15,11 @@ namespace AdmissionsCommittee.Abstract
 
         protected AdmissionsCommitteeDBContainer _db;
 
+        public BaseModelView()
+        {
+            _db = new AdmissionsCommitteeDBContainer();
+        }
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

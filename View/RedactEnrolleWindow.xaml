@@ -30,12 +30,12 @@
         <TextBlock Text="Группа" VerticalAlignment="Top"/>
         <ComboBox  Width="200" HorizontalAlignment="Left" Height="20"
                   ItemsSource="{Binding Groups}"
-                  SelectedValue="{Binding SelectedEnrolle.EnrolleFlow}"/>
+                  SelectedValue="{Binding GroupName}"/>
 
         <TextBlock  Text="Поток" VerticalAlignment="Bottom"/>
         <ComboBox  Width="200" HorizontalAlignment="Left" Height="20"
                   ItemsSource="{Binding Flows}"
-                  SelectedValue="{Binding SelectedEnrolle.EnrolleGroup}"></ComboBox>
+                  SelectedValue="{Binding FlowName}"></ComboBox>
 
         <TextBlock  Text="Учебное заведение" VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding SelectedEnrolle.EnrolleEducation}"/>

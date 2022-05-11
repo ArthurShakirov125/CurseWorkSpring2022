@@ -1,4 +1,4 @@
-﻿using AdmissionsCommittee.View;
+﻿using AdmissionsCommittee.ModelView.MainView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdmissionsCommittee.ModelView
+namespace AdmissionsCommittee.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для FacultyPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class FacultyPage : Page
     {
         private NavigationService _navigationService;
 
-        public MainPage(NavigationService navigationService)
+
+        public FacultyPage(NavigationService navigationService)
         {
             InitializeComponent();
-            _navigationService = navigationService;
+            this._navigationService = navigationService;
+            DataContext = new FacultySetModelView();
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -37,8 +39,6 @@ namespace AdmissionsCommittee.ModelView
 
         private void ToFacultysPage(object sender, RoutedEventArgs e)
         {
-            FacultyPage page = new FacultyPage(_navigationService);
-            _navigationService.Navigate(page);
         }
 
         private void ToExamsPage(object sender, RoutedEventArgs e)
@@ -74,11 +74,6 @@ namespace AdmissionsCommittee.ModelView
         private void ToSubjectsPage(object sender, RoutedEventArgs e)
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
-            _navigationService.Navigate(page);
-        }
-        private void MakeExamsStatement(object sender, RoutedEventArgs e)
-        {
-            ExamStatementPage page = new ExamStatementPage();
             _navigationService.Navigate(page);
         }
     }

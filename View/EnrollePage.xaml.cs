@@ -39,5 +39,52 @@ namespace AdmissionsCommittee.View
             win.DataContext = enrollesModelView;
             win.Show();
         }
+
+        private void ToFacultysPage(object sender, RoutedEventArgs e)
+        {
+            FacultyPage page = new FacultyPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToExamsPage(object sender, RoutedEventArgs e)
+        {
+            ExamsPage page = new ExamsPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToConsultsPage(object sender, RoutedEventArgs e)
+        {
+            ConsultPage page = new ConsultPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToFlowsPage(object sender, RoutedEventArgs e)
+        {
+            FlowsPage page = new FlowsPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToGroupsPage(object sender, RoutedEventArgs e)
+        {
+            GroupsPage page = new GroupsPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToDepartsPage(object sender, RoutedEventArgs e)
+        {
+            DepartmentPage page = new DepartmentPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToSubjectsPage(object sender, RoutedEventArgs e)
+        {
+            SubjectsPage page = new SubjectsPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        private void ToEnrollePage(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -9,6 +9,12 @@ namespace AdmissionsCommittee.ModelView.MainView
 {
     public class GroupSetModelView : BaseModelView
     {
+
+        public GroupSetModelView()
+        {
+            groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
+        }
+
         private IEnumerable<GroupModelView> groups;
 
         public IEnumerable<GroupModelView> Groups
@@ -23,7 +29,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         private GroupModelView selectedGroup;
 
-        public GroupModelView SelecteGroup
+        public GroupModelView SelectedGroup
         {
             get { return selectedGroup; }
             set 

@@ -16,7 +16,6 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         public EnrollesModelView()
         {
-            _db = new AdmissionsCommitteeDBContainer();
             enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
 
             Flows = _db.FlowSet.Select(f => f.Name).ToList();
@@ -85,6 +84,9 @@ namespace AdmissionsCommittee.ModelView.MainView
             SelectedDay = SelectedEnrolle.EnrolleGraduationDateTime.Day;
             SelectedMonth = SelectedEnrolle.EnrolleGraduationDateTime.Month;
             SelectedYear = SelectedEnrolle.EnrolleGraduationDateTime.Year;
+
+            GroupName = SelectedEnrolle.EnrolleGroup;
+            FlowName = SelectedEnrolle.EnrolleFlow;
         }
 
 
@@ -97,6 +99,10 @@ namespace AdmissionsCommittee.ModelView.MainView
                     (redactEnrolle = new RelayCommand(SaveChanges));
             }
         }
+
+        public string GroupName { get; set; }
+        public string FlowName { get; set; }
+
         public void SaveChanges(object obj)
         {
             Enrollee enrollee = _db.EnrolleeSet.Where(u => u.Id == SelectedEnrolle.enrolee.Id).First();
@@ -108,11 +114,11 @@ namespace AdmissionsCommittee.ModelView.MainView
             enrollee.Education = selectedEnrolle.EnrolleEducation;
             enrollee.Golden_medal = selectedEnrolle.EnrolleGoldenMedal;
             enrollee.Silver_medal = selectedEnrolle.EnrolleSilverMedal;
-            enrollee.Exam_sheet = _db.Exam_sheetSet.First(e => e.Group.Name == SelectedEnrolle.EnrolleGroup);
 
             string date = string.Join("/", SelectedDay, SelectedMonth, SelectedYear);
             enrollee.Graduation = DateTime.Parse(date);
             selectedEnrolle.EnrolleGraduation = date;
+
 
             _db.SaveChanges();
             MessageBox.Show("Изменение произведено успешно");

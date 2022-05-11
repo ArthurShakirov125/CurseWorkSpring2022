@@ -91,8 +91,29 @@
     <Compile Include="ModelView\MainView\GroupSetModelView.cs" />
     <Compile Include="ModelView\MainView\SubjectModelView.cs" />
     <Compile Include="ModelView\MainView\SubjectSetModelView.cs" />
+    <Compile Include="View\ConsultPage.xaml.cs">
+      <DependentUpon>ConsultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DepartmentPage.xaml.cs">
+      <DependentUpon>DepartmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExamsPage.xaml.cs">
+      <DependentUpon>ExamsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExamStatementPage.xaml.cs">
+      <DependentUpon>ExamStatementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FacultyPage.xaml.cs">
+      <DependentUpon>FacultyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlowsPage.xaml.cs">
+      <DependentUpon>FlowsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupsPage.xaml.cs">
+      <DependentUpon>GroupsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -106,6 +127,9 @@
     </Compile>
     <Compile Include="View\RedactEnrolleWindow.xaml.cs">
       <DependentUpon>RedactEnrolleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SubjectsPage.xaml.cs">
+      <DependentUpon>SubjectsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserCreateWindow.xaml.cs">
       <DependentUpon>UserCreateWindow.xaml</DependentUpon>
@@ -176,7 +200,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ConsultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EnrollePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExamStatementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FacultyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FlowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GroupsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RedactEnrolleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SubjectsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

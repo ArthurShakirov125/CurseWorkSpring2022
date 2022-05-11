@@ -10,6 +10,12 @@ namespace AdmissionsCommittee.ModelView.MainView
 {
     public class FlowSetModleView : BaseModelView
     {
+
+        public FlowSetModleView()
+        {
+            Flows = _db.FlowSet.ToList().Select(f => new FlowModleView(f));
+        }
+
         private IEnumerable<FlowModleView> flows;
 
         public IEnumerable<FlowModleView> Flows

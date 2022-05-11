@@ -1,14 +1,14 @@
-﻿<Page x:Class="AdmissionsCommittee.View.EnrollePage"
+﻿<Page x:Class="AdmissionsCommittee.View.ExamsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AdmissionsCommittee.View"
       xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
-      d:DataContext="{d:DesignInstance Type=viewModel:EnrollesModelView}"
+      d:DataContext="{d:DesignInstance Type=viewModel:ExamSetModelView}"
       mc:Ignorable="d" 
-      d:DesignHeight="760" d:DesignWidth="1080"
-      Title="EnrollePage">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExamsPage">
 
     <Page.Resources>
         <Style x:Key="tileBtns">
@@ -40,27 +40,23 @@
             <Button Style="{StaticResource tileBtns}" Click="ToSubjectsPage" Content="Предметы"></Button>
         </StackPanel>
 
-        <ListView SelectedItem="{Binding SelectedEnrolle}" ItemsSource="{Binding EnrolleModles}" Grid.Column="0" Grid.Row="1">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационный лист"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационную ведомость"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Составить списки на зачесление"></Button>
+        </StackPanel>
+
+
+        <ListView SelectedItem="{Binding Exam}" ItemsSource="{Binding Exams}" Grid.Column="0" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Имя" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleName}"></GridViewColumn>
-                    <GridViewColumn Header="Фамилия" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleSurename}"></GridViewColumn>
-                    <GridViewColumn Header="Отчество" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleLastname}"></GridViewColumn>
-                    <GridViewColumn Header="Поток" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleFlow}"></GridViewColumn>
-                    <GridViewColumn Header="Группа" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGroup}"></GridViewColumn>
-                    <GridViewColumn Header="Паспорт" Width="Auto" DisplayMemberBinding="{Binding Path=EnrollePassport}"></GridViewColumn>
-                    <GridViewColumn Header="Учебное заведение" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleEducation}"></GridViewColumn>
-                    <GridViewColumn Header="Дата выпуска" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGraduation}"></GridViewColumn>
-                    <GridViewColumn Header="Золотая медаль" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleGoldenMedal}"></GridViewColumn>
-                    <GridViewColumn Header="Серебрянная медаль" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleSilverMedal}"></GridViewColumn>
+                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Path=SubjectName}"></GridViewColumn>
+                    <GridViewColumn Header="Поток" Width="Auto" DisplayMemberBinding="{Binding Path=Flow}"></GridViewColumn>
+                    <GridViewColumn Header="Кабинет" Width="Auto" DisplayMemberBinding="{Binding Path=Classroom}"></GridViewColumn>
+                    <GridViewColumn Header="Дата" Width="Auto" DisplayMemberBinding="{Binding Path=Date}"></GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Style="{StaticResource bigBtns}" Content="Добавить абитуриента"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="Redact"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Удалить"></Button>
-        </StackPanel>
     </Grid>
 </Page>
