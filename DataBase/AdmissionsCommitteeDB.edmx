@@ -37,7 +37,6 @@
           <Property Name="Golden_medal" Type="bit" Nullable="false" />
           <Property Name="Silver_medal" Type="bit" Nullable="false" />
           <Property Name="Exam_sheet_Exam_sheet_number" Type="int" Nullable="false" />
-          <Property Name="Exam_statement_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Exam_scheduleSet">
           <Key>
@@ -61,8 +60,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Mark" Type="tinyint" Nullable="false" />
-          <Property Name="Points" Type="smallint" Nullable="false" />
+          <Property Name="Mark" Type="tinyint" />
+          <Property Name="Points" Type="smallint" />
+          <Property Name="Enrollee_Id" Type="int" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FacultySet">
           <Key>
@@ -95,7 +96,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Pass_points" Type="smallint" Nullable="false" />
-          <Property Name="Exam_statement_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UniversitySet">
           <Key>
@@ -150,14 +150,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EnrolleeExam_statement">
-          <End Role="Exam_statementSet" Type="Self.Exam_statementSet" Multiplicity="1" />
-          <End Role="EnrolleeSet" Type="Self.EnrolleeSet" Multiplicity="*" />
+          <End Role="EnrolleeSet" Type="Self.EnrolleeSet" Multiplicity="0..1" />
+          <End Role="Exam_statementSet" Type="Self.Exam_statementSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Exam_statementSet">
+            <Principal Role="EnrolleeSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="EnrolleeSet">
-              <PropertyRef Name="Exam_statement_Id" />
+            <Dependent Role="Exam_statementSet">
+              <PropertyRef Name="Enrollee_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -186,14 +186,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Exam_statementSubject">
-          <End Role="Exam_statementSet" Type="Self.Exam_statementSet" Multiplicity="1" />
-          <End Role="SubjectSet" Type="Self.SubjectSet" Multiplicity="*" />
+          <End Role="SubjectSet" Type="Self.SubjectSet" Multiplicity="1" />
+          <End Role="Exam_statementSet" Type="Self.Exam_statementSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Exam_statementSet">
+            <Principal Role="SubjectSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SubjectSet">
-              <PropertyRef Name="Exam_statement_Id" />
+            <Dependent Role="Exam_statementSet">
+              <PropertyRef Name="Subject_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -271,8 +271,8 @@
             <End Role="EnrolleeSet" EntitySet="EnrolleeSet" />
           </AssociationSet>
           <AssociationSet Name="FK_EnrolleeExam_statement" Association="Self.FK_EnrolleeExam_statement">
-            <End Role="Exam_statementSet" EntitySet="Exam_statementSet" />
             <End Role="EnrolleeSet" EntitySet="EnrolleeSet" />
+            <End Role="Exam_statementSet" EntitySet="Exam_statementSet" />
           </AssociationSet>
           <AssociationSet Name="FK_Exam_scheduleSubject" Association="Self.FK_Exam_scheduleSubject">
             <End Role="SubjectSet" EntitySet="SubjectSet" />
@@ -283,8 +283,8 @@
             <End Role="Exam_sheetSet" EntitySet="Exam_sheetSet" />
           </AssociationSet>
           <AssociationSet Name="FK_Exam_statementSubject" Association="Self.FK_Exam_statementSubject">
-            <End Role="Exam_statementSet" EntitySet="Exam_statementSet" />
             <End Role="SubjectSet" EntitySet="SubjectSet" />
+            <End Role="Exam_statementSet" EntitySet="Exam_statementSet" />
           </AssociationSet>
           <AssociationSet Name="FK_FacultyDepartment" Association="Self.FK_FacultyDepartment">
             <End Role="FacultySet" EntitySet="FacultySet" />
@@ -460,14 +460,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Mark" Type="Byte" Nullable="false" />
-          <Property Name="Points" Type="Int16" Nullable="false" />
+          <Property Name="Mark" Type="Byte" />
+          <Property Name="Points" Type="Int16" />
           <NavigationProperty Name="Enrollee" Relationship="AdmissionsCommitteeDB.EnrolleeExam_statement" FromRole="Exam_statement" ToRole="Enrollee" />
           <NavigationProperty Name="Subject" Relationship="AdmissionsCommitteeDB.Exam_statementSubject" FromRole="Exam_statement" ToRole="Subject" />
         </EntityType>
         <Association Name="EnrolleeExam_statement">
           <End Type="AdmissionsCommitteeDB.Enrollee" Role="Enrollee" Multiplicity="1" />
-          <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="*" />
         </Association>
         <EntityType Name="Subject">
           <Key>
@@ -634,6 +634,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="FacultyDepartment" TypeName="AdmissionsCommitteeDB.FacultyDepartment" StoreEntitySet="DepartmentSet">
       <EndProperty Name="Faculty">
         <ScalarProperty Name="Id" ColumnName="Faculty_Id" />
@@ -674,19 +683,19 @@
         <ScalarProperty Name="Exam_sheet_number" ColumnName="Exam_sheet_number" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="EnrolleeExam_statement" TypeName="AdmissionsCommitteeDB.EnrolleeExam_statement" StoreEntitySet="EnrolleeSet">
-      <EndProperty Name="Exam_statement">
-        <ScalarProperty Name="Id" ColumnName="Exam_statement_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="EnrolleeExam_statement" TypeName="AdmissionsCommitteeDB.EnrolleeExam_statement" StoreEntitySet="Exam_statementSet">
       <EndProperty Name="Enrollee">
+        <ScalarProperty Name="Id" ColumnName="Enrollee_Id" />
+      </EndProperty>
+      <EndProperty Name="Exam_statement">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Exam_statementSubject" TypeName="AdmissionsCommitteeDB.Exam_statementSubject" StoreEntitySet="SubjectSet">
-      <EndProperty Name="Exam_statement">
-        <ScalarProperty Name="Id" ColumnName="Exam_statement_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="Exam_statementSubject" TypeName="AdmissionsCommitteeDB.Exam_statementSubject" StoreEntitySet="Exam_statementSet">
       <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="Exam_statement">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
@@ -722,15 +731,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-          <EntitySetMapping Name="UserSet">
-            <EntityTypeMapping TypeName="AdmissionsCommitteeDB.User">
-              <MappingFragment StoreEntitySet="UserSet">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

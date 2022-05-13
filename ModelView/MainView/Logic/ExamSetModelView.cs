@@ -31,6 +31,30 @@ namespace AdmissionsCommittee.ModelView.MainView
             exams = _db.Exam_scheduleSet.ToList().Select(e => new ExamModelView(e));
         }
 
+        public override void Add(object obj)
+        {
+            var ex = new Exam_schedule()
+            {
+                Classroom = Exam.Classroom,
+                //Date = Exam.Date,
+                Subject = _db.SubjectSet.First(s => s.Name == Exam.SubjectName),
+                Flow = _db.FlowSet.First(f => f.Name == Exam.Flow)
+            };
 
+            _db.Exam_scheduleSet.Add(ex);
+            _db.SaveChanges();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            var ex = _db.Exam_scheduleSet.Find(Exam.Exam.Id);
+            _db.Exam_scheduleSet.Remove(ex);
+            _db.SaveChanges();
+        }
     }
 }

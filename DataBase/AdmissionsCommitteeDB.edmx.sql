@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/19/2022 17:52:56
+-- Date Created: 05/13/2022 15:13:00
 -- Generated from EDMX file: C:\C#\Curswork\AdmissionsCommittee\DataBase\AdmissionsCommitteeDB.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,80 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ConsultationSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConsultationSet] DROP CONSTRAINT [FK_ConsultationSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DepartmentFlow]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FlowSet] DROP CONSTRAINT [FK_DepartmentFlow];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EnrolleeExam_sheet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EnrolleeSet] DROP CONSTRAINT [FK_EnrolleeExam_sheet];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EnrolleeExam_statement]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EnrolleeSet] DROP CONSTRAINT [FK_EnrolleeExam_statement];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Exam_scheduleSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Exam_scheduleSet] DROP CONSTRAINT [FK_Exam_scheduleSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Exam_sheetGroup]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Exam_sheetSet] DROP CONSTRAINT [FK_Exam_sheetGroup];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Exam_statementSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SubjectSet] DROP CONSTRAINT [FK_Exam_statementSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FacultyDepartment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DepartmentSet] DROP CONSTRAINT [FK_FacultyDepartment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FlowConsultation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConsultationSet] DROP CONSTRAINT [FK_FlowConsultation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FlowExam_schedule]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Exam_scheduleSet] DROP CONSTRAINT [FK_FlowExam_schedule];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FlowGroup]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[GroupSet] DROP CONSTRAINT [FK_FlowGroup];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ConsultationSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ConsultationSet];
+GO
+IF OBJECT_ID(N'[dbo].[DepartmentSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DepartmentSet];
+GO
+IF OBJECT_ID(N'[dbo].[EnrolleeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EnrolleeSet];
+GO
+IF OBJECT_ID(N'[dbo].[Exam_scheduleSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Exam_scheduleSet];
+GO
+IF OBJECT_ID(N'[dbo].[Exam_sheetSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Exam_sheetSet];
+GO
+IF OBJECT_ID(N'[dbo].[Exam_statementSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Exam_statementSet];
+GO
+IF OBJECT_ID(N'[dbo].[FacultySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FacultySet];
+GO
+IF OBJECT_ID(N'[dbo].[FlowSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FlowSet];
+GO
+IF OBJECT_ID(N'[dbo].[GroupSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[GroupSet];
+GO
+IF OBJECT_ID(N'[dbo].[SubjectSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SubjectSet];
+GO
+IF OBJECT_ID(N'[dbo].[UniversitySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UniversitySet];
+GO
+IF OBJECT_ID(N'[dbo].[UserSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -78,8 +147,7 @@ CREATE TABLE [dbo].[EnrolleeSet] (
     [Graduation] datetime  NOT NULL,
     [Golden_medal] bit  NOT NULL,
     [Silver_medal] bit  NOT NULL,
-    [Exam_sheet_Exam_sheet_number] int  NOT NULL,
-    [Exam_statement_Id] int  NOT NULL
+    [Exam_sheet_Exam_sheet_number] int  NOT NULL
 );
 GO
 
@@ -94,7 +162,9 @@ GO
 CREATE TABLE [dbo].[Exam_statementSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Mark] tinyint  NOT NULL,
-    [Points] smallint  NOT NULL
+    [Points] smallint  NOT NULL,
+    [Enrollee_Id] int  NOT NULL,
+    [Subject_Id] int  NOT NULL
 );
 GO
 
@@ -102,8 +172,7 @@ GO
 CREATE TABLE [dbo].[SubjectSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Pass_points] smallint  NOT NULL,
-    [Exam_statement_Id] int  NOT NULL
+    [Pass_points] smallint  NOT NULL
 );
 GO
 
@@ -124,6 +193,14 @@ CREATE TABLE [dbo].[ConsultationSet] (
     [Date] datetime  NOT NULL,
     [Flow_Id] int  NOT NULL,
     [Subject_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'UserSet'
+CREATE TABLE [dbo].[UserSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Login] nvarchar(max)  NOT NULL,
+    [Password] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -194,6 +271,12 @@ GO
 -- Creating primary key on [Id] in table 'ConsultationSet'
 ALTER TABLE [dbo].[ConsultationSet]
 ADD CONSTRAINT [PK_ConsultationSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserSet'
+ALTER TABLE [dbo].[UserSet]
+ADD CONSTRAINT [PK_UserSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -276,34 +359,34 @@ ON [dbo].[Exam_sheetSet]
     ([Group_Id]);
 GO
 
--- Creating foreign key on [Exam_statement_Id] in table 'EnrolleeSet'
-ALTER TABLE [dbo].[EnrolleeSet]
+-- Creating foreign key on [Enrollee_Id] in table 'Exam_statementSet'
+ALTER TABLE [dbo].[Exam_statementSet]
 ADD CONSTRAINT [FK_EnrolleeExam_statement]
-    FOREIGN KEY ([Exam_statement_Id])
-    REFERENCES [dbo].[Exam_statementSet]
+    FOREIGN KEY ([Enrollee_Id])
+    REFERENCES [dbo].[EnrolleeSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_EnrolleeExam_statement'
 CREATE INDEX [IX_FK_EnrolleeExam_statement]
-ON [dbo].[EnrolleeSet]
-    ([Exam_statement_Id]);
+ON [dbo].[Exam_statementSet]
+    ([Enrollee_Id]);
 GO
 
--- Creating foreign key on [Exam_statement_Id] in table 'SubjectSet'
-ALTER TABLE [dbo].[SubjectSet]
+-- Creating foreign key on [Subject_Id] in table 'Exam_statementSet'
+ALTER TABLE [dbo].[Exam_statementSet]
 ADD CONSTRAINT [FK_Exam_statementSubject]
-    FOREIGN KEY ([Exam_statement_Id])
-    REFERENCES [dbo].[Exam_statementSet]
+    FOREIGN KEY ([Subject_Id])
+    REFERENCES [dbo].[SubjectSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Exam_statementSubject'
 CREATE INDEX [IX_FK_Exam_statementSubject]
-ON [dbo].[SubjectSet]
-    ([Exam_statement_Id]);
+ON [dbo].[Exam_statementSet]
+    ([Subject_Id]);
 GO
 
 -- Creating foreign key on [Flow_Id] in table 'Exam_scheduleSet'

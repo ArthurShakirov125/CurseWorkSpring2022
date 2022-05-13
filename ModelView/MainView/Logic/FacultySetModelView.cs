@@ -41,8 +41,28 @@ namespace AdmissionsCommittee.ModelView.MainView
             Faculties = _db.FacultySet.ToList().Select(f => new FacultyModelView(f));
         }
 
+        public override void Add(object obj)
+        {
+            var fac = new Faculty()
+            {
+                Name = selectedFaculty.Name,
+                Competition = selectedFaculty.Competition,
+            };
 
+            _db.FacultySet.Add(fac);
+            _db.SaveChanges();
+        }
 
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void Delete(object obj)
+        {
+            var Facul = _db.FacultySet.Find(selectedFaculty.Faculty.Id);
+            _db.FacultySet.Remove(Facul);
+            _db.SaveChanges();
+        }
     }
 }

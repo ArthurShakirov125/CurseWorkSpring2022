@@ -89,21 +89,10 @@ namespace AdmissionsCommittee.ModelView.MainView
             FlowName = SelectedEnrolle.EnrolleFlow;
         }
 
-
-
-        public RelayCommand RedactNewUser
-        {
-            get
-            {
-                return redactEnrolle ??
-                    (redactEnrolle = new RelayCommand(SaveChanges));
-            }
-        }
-
         public string GroupName { get; set; }
         public string FlowName { get; set; }
 
-        public void SaveChanges(object obj)
+        public override void Redact(object obj)
         {
             Enrollee enrollee = _db.EnrolleeSet.Where(u => u.Id == SelectedEnrolle.enrolee.Id).First();
 
@@ -124,5 +113,39 @@ namespace AdmissionsCommittee.ModelView.MainView
             MessageBox.Show("Изменение произведено успешно");
         }
 
+        public override void Add(object obj)
+        {
+            Enrollee enrollee = new Enrollee();
+
+            enrollee.Name = selectedEnrolle.EnrolleName;
+            enrollee.Surname = selectedEnrolle.EnrolleSurename;
+            enrollee.Lastname = selectedEnrolle.EnrolleLastname;
+            enrollee.Passport = selectedEnrolle.EnrollePassport;
+            enrollee.Education = selectedEnrolle.EnrolleEducation;
+            enrollee.Golden_medal = selectedEnrolle.EnrolleGoldenMedal;
+            enrollee.Silver_medal = selectedEnrolle.EnrolleSilverMedal;
+
+            string date = string.Join("/", SelectedDay, SelectedMonth, SelectedYear);
+            enrollee.Graduation = DateTime.Parse(date);
+
+            Exam_sheet _Sheet = new Exam_sheet()
+            {
+                Enrollee = enrollee,
+                Group = _db.GroupSet.First(g => g.Name == selectedEnrolle.EnrolleGroup)
+            };
+            _db.Exam_sheetSet.Add(_Sheet);
+
+            enrollee.Exam_sheet = _Sheet;
+
+            _db.EnrolleeSet.Add(enrollee);
+            _db.SaveChanges();
+        }
+
+        public override void Delete(object obj)
+        {
+            var enrl = _db.EnrolleeSet.Find(SelectedEnrolle.enrolee.Id);
+            _db.EnrolleeSet.Remove(enrl);
+            _db.SaveChanges();
+        }
     }
 }

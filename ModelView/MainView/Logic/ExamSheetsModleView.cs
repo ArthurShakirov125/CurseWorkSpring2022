@@ -15,7 +15,11 @@ namespace AdmissionsCommittee.ModelView.MainView
         public IEnumerable<ExamSheetModleView> ExamSheets
         {
             get { return examSheets; }
-            set { examSheets = value; }
+            set 
+            { 
+                examSheets = value;
+                OnPropertyChanged();
+            }
         }
 
         private ExamSheetModleView sheet;
@@ -23,7 +27,11 @@ namespace AdmissionsCommittee.ModelView.MainView
         public ExamSheetModleView ExamSheet
         {
             get { return sheet; }
-            set { sheet = value; }
+            set 
+            { 
+                sheet = value;
+                OnPropertyChanged();
+            }
         }
 
         public ExamSheetsModleView()
@@ -31,6 +39,19 @@ namespace AdmissionsCommittee.ModelView.MainView
             ExamSheets = _db.Exam_sheetSet.ToList().Select(e => new ExamSheetModleView(e));
         }
 
+        public override void Add(object obj)
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

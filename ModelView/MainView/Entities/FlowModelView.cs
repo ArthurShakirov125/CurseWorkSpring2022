@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class FlowModleView : EntityModelView<Flow>
+    public class FlowModelView : EntityModelView<Flow>
     {
-        public FlowModleView(Flow model) : base(model)
+        public FlowModelView(Flow model) : base(model)
         {
         }
 

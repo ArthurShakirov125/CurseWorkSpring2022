@@ -39,6 +39,30 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
+        public override void Add(object obj)
+        {
+            Exam_statement ex = new Exam_statement()
+            {
+                Enrollee = Exam.Enrolle,
+                Subject = _db.SubjectSet.First(s => s.Name == Exam.Subject),
+                Mark = Exam.Mark,
+                Points = Exam.Points
+            };
 
+            _db.Exam_statementSet.Add(ex);
+            _db.SaveChanges();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            var ex = _db.Exam_statementSet.Find(Exam.examStatement.Id);
+            _db.Exam_statementSet.Remove(ex);
+            _db.SaveChanges();
+        }
     }
 }

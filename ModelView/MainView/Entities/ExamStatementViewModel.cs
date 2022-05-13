@@ -24,16 +24,6 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public string EnrolleName
-        {
-            get { return _model.Enrollee.Name; }
-            set
-            {
-                _model.Enrollee.Name = value;
-                OnPropertyChanged();
-            }
-        }
-
         public string Subject
         {
             get { return _model.Subject.Name; }
@@ -44,17 +34,17 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public string EnrolleSurename
+        public Enrollee Enrolle
         {
-            get { return _model.Enrollee.Surname; }
+            get { return _model.Enrollee; }
             set
             {
-                _model.Enrollee.Surname = value;
+                _model.Enrollee = value;
                 OnPropertyChanged();
             }
         }
 
-        public short Points
+        public short? Points
         {
             get { return _model.Points; }
             set
@@ -64,7 +54,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public byte Mark
+        public byte? Mark
         {
             get { return _model.Mark; }
             set

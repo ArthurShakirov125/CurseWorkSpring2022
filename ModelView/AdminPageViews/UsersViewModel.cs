@@ -12,10 +12,9 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 {
     public class UsersViewModel : BaseModelView
     {
-        protected RelayCommand createNewUser;
-        protected RelayCommand redactNewUser;
+
+
         protected RelayCommand takeSelectedUser;
-        protected RelayCommand deleteSelectedUser;
 
         protected List<User> rawUsers { get; set; }
 
@@ -73,31 +72,6 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             _newUser = new UserViewModel(User);
 
         }
-
-        public RelayCommand CreateNewUser
-        {
-            get
-            {
-                return createNewUser ??
-                    (createNewUser = new RelayCommand(AddUser));
-            }
-        }
-        public RelayCommand RedactNewUser
-        {
-            get
-            {
-                return redactNewUser ??
-                    (redactNewUser = new RelayCommand(RedactUser));
-            }
-        }
-        public RelayCommand DeleteSelectedUser
-        {
-            get
-            {
-                return deleteSelectedUser ??
-                    (deleteSelectedUser = new RelayCommand(DeleteUser));
-            }
-        }
         public RelayCommand TakeSelectedUser
         {
             get
@@ -106,7 +80,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                     (takeSelectedUser = new RelayCommand(takeUser));
             }
         }
-        private void DeleteUser(object obj)
+        public override void Delete(object obj)
         {
             _db.UserSet.Remove(SelectedUser.User);
             Users = Users.Where(u => u.Login != SelectedUser.Login);
@@ -118,7 +92,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             _selectedUserLogin = SelectedUser.Login;
         }
 
-        private void RedactUser(object obj)
+        public override void Redact(object obj)
         {
             User user = _db.UserSet.Where(u => u.Login == _selectedUserLogin).First();
             user.Login = SelectedUser.Login;
@@ -128,7 +102,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             MessageBox.Show("Изменение произведено успешно");
         }
 
-        private void AddUser(object obj)
+        public override void Add(object obj)
         {
             if (Users.Any(user => user.Login == NewUser.Login))
             {

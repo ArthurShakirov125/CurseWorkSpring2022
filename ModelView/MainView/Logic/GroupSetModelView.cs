@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.Abstract;
+using AdmissionsCommittee.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,28 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
+        public override void Add(object obj)
+        {
+            var grp = new Group()
+            {
+                Name = selectedGroup.Name,
+                Flow = _db.FlowSet.First(s => s.Name == selectedGroup.Flow)
+            };
 
+            _db.GroupSet.Add(grp);
+            _db.SaveChanges();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            var grp = _db.GroupSet.Find(selectedGroup.Group.Id);
+            _db.GroupSet.Remove(grp);
+            _db.SaveChanges();
+        }
     }
 }

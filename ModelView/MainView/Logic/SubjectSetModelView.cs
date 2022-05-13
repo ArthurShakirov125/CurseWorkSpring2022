@@ -39,5 +39,34 @@ namespace AdmissionsCommittee.ModelView.MainView
             Subjects = _db.SubjectSet.ToList().Select(s => new SubjectModelView(s));
         }
 
+        public override void Add(object obj)
+        {
+            var sub = new Subject()
+            {
+                Name = Subject.Name,
+                Pass_points = Subject.PassPoints,
+            };
+
+            Exam_statement ex = new Exam_statement()
+            {
+                Subject = sub,
+            };
+
+            _db.Exam_statementSet.Add(ex);
+            _db.SubjectSet.Add(sub);
+            _db.SaveChanges();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            var sub = _db.SubjectSet.Find(Subject.Subject.Id);
+            _db.SubjectSet.Remove(sub);
+            _db.SaveChanges();
+        }
     }
 }

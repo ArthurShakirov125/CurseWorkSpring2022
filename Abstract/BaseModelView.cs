@@ -9,8 +9,40 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.Abstract
 {
-    public class BaseModelView : INotifyPropertyChanged
+    public abstract class BaseModelView : INotifyPropertyChanged
     {
+
+        protected RelayCommand createNewUser;
+        protected RelayCommand redactNewUser;
+        protected RelayCommand deleteSelectedUser;
+
+
+        public RelayCommand CreateNewUser
+        {
+            get
+            {
+                return createNewUser ??
+                    (createNewUser = new RelayCommand(Add));
+            }
+        }
+
+        public RelayCommand RedactNewUser
+        {
+            get
+            {
+                return redactNewUser ??
+                    (redactNewUser = new RelayCommand(Redact));
+            }
+        }
+        public RelayCommand DeleteSelectedUser
+        {
+            get
+            {
+                return deleteSelectedUser ??
+                    (deleteSelectedUser = new RelayCommand(Delete));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected AdmissionsCommitteeDBContainer _db;
@@ -24,5 +56,11 @@ namespace AdmissionsCommittee.Abstract
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        public abstract void Add(object obj);
+
+        public abstract void Redact(object obj);
+
+        public abstract void Delete(object obj);
     }
 }

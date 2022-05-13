@@ -46,6 +46,21 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             }
         }
 
+        public override void Add(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
         protected UserViewModel _user;
 
         public UserViewModel User

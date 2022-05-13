@@ -15,8 +15,8 @@ namespace AdmissionsCommittee.DataBase
     public partial class Exam_statement
     {
         public int Id { get; set; }
-        public byte Mark { get; set; }
-        public short Points { get; set; }
+        public Nullable<byte> Mark { get; set; }
+        public Nullable<short> Points { get; set; }
     
         public virtual Enrollee Enrollee { get; set; }
         public virtual Subject Subject { get; set; }

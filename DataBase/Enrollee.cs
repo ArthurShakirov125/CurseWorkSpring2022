@@ -14,6 +14,12 @@ namespace AdmissionsCommittee.DataBase
     
     public partial class Enrollee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Enrollee()
+        {
+            this.Exam_statement = new HashSet<Exam_statement>();
+        }
+    
         public int Id { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
@@ -25,6 +31,7 @@ namespace AdmissionsCommittee.DataBase
         public bool Silver_medal { get; set; }
     
         public virtual Exam_sheet Exam_sheet { get; set; }
-        public virtual Exam_statement Exam_statement { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exam_statement> Exam_statement { get; set; }
     }
 }

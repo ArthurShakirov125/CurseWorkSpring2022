@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.Group" Width="1.5" PointX="8.625" PointY="4.5" FillColor="Cyan" />
         <AssociationConnector Association="AdmissionsCommitteeDB.FlowGroup" />
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.Enrollee" Width="1.5" PointX="4" PointY="4.5" FillColor="Red" />
-        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_sheet" Width="1.5" PointX="6.375" PointY="4.375" />
+        <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_sheet" Width="1.5" PointX="6.375" PointY="4.625" />
         <AssociationConnector Association="AdmissionsCommitteeDB.EnrolleeExam_sheet" />
         <AssociationConnector Association="AdmissionsCommitteeDB.Exam_sheetGroup" />
         <EntityTypeShape EntityType="AdmissionsCommitteeDB.Exam_statement" Width="1.5" PointX="11" PointY="6" />

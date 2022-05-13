@@ -16,5 +16,19 @@ namespace AdmissionsCommittee.Abstract
             _db = new DataBase.AdmissionsCommitteeDBContainer();
         }
 
+        public override void Add(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Redact(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
