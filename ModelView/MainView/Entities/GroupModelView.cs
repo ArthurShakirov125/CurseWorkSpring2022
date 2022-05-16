@@ -34,14 +34,7 @@ namespace AdmissionsCommittee.ModelView.MainView
         public string Flow
         {
             get { return _model.Flow.Name; }
-            set
-            {
-                var flow = _db.FlowSet.Where(f => f.Name == value).First();
-
-                _model.Exam_sheet.Group.Flow = flow;
-                _db.SaveChanges();
-                OnPropertyChanged();
-            }
+            set { _model.Flow = _db.FlowSet.First(f => f.Name == value); }
         }
 
         public string Department

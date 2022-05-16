@@ -30,12 +30,12 @@
         <TextBlock Text="Группа" VerticalAlignment="Top"/>
         <ComboBox  Width="200" HorizontalAlignment="Left" Height="20"
                   ItemsSource="{Binding Groups}"
-                  SelectedValue="{Binding GroupName}"/>
+                  SelectedValue="{Binding SelectedEnrolle.EnrolleGroup}"/>
 
         <TextBlock  Text="Поток" VerticalAlignment="Bottom"/>
         <ComboBox  Width="200" HorizontalAlignment="Left" Height="20"
                   ItemsSource="{Binding Flows}"
-                  SelectedValue="{Binding FlowName}"></ComboBox>
+                  SelectedValue="{Binding SelectedEnrolle.EnrolleFlow}"></ComboBox>
 
         <TextBlock  Text="Учебное заведение" VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding SelectedEnrolle.EnrolleEducation}"/>
@@ -56,8 +56,13 @@
         <CheckBox VerticalAlignment="Center"
                   IsChecked="{Binding SelectedEnrolle.EnrolleSilverMedal}"></CheckBox>
 
-        <Button Height="30" Width="100" VerticalAlignment="Bottom" Content="Сохранить" Margin="0,20,0,0"
-                Command="{Binding RedactNewUser}"></Button>
+            <StackPanel Orientation="Horizontal" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button Content="Сохранить"
+                Command="{Binding RedactCommand}" Margin="0,0,40,0" Width="70"></Button>
+                <Button Content="Добавить"
+                Command="{Binding CreateNew}" Width="70"></Button>
+            </StackPanel>
+            
 
         </StackPanel>
 

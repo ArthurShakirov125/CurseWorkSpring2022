@@ -26,7 +26,7 @@ namespace AdmissionsCommittee
         public MainWindow()
         {
             InitializeComponent();
-            AuthorizationPage Page = new AuthorizationPage(this.NavigationService);
+            MainPage Page = new MainPage(this.NavigationService);
             NavigationService.Navigate(Page);
         }
     }

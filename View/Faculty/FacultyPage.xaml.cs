@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Faculty;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,14 @@ namespace AdmissionsCommittee.View
     public partial class FacultyPage : Page
     {
         private NavigationService _navigationService;
-
+        private FacultySetModelView setModelView;
 
         public FacultyPage(NavigationService navigationService)
         {
             InitializeComponent();
             this._navigationService = navigationService;
-            DataContext = new FacultySetModelView();
+            setModelView = new FacultySetModelView();
+            DataContext = setModelView;
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -75,6 +77,13 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void RedactWindowBtn(object sender, RoutedEventArgs e)
+        {
+            RedactFacultyWindow win = new RedactFacultyWindow();
+            win.DataContext = setModelView;
+            win.Show();
         }
     }
 }

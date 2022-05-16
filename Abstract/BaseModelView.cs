@@ -12,34 +12,34 @@ namespace AdmissionsCommittee.Abstract
     public abstract class BaseModelView : INotifyPropertyChanged
     {
 
-        protected RelayCommand createNewUser;
-        protected RelayCommand redactNewUser;
-        protected RelayCommand deleteSelectedUser;
+        protected RelayCommand create;
+        protected RelayCommand redact;
+        protected RelayCommand delete;
 
 
-        public RelayCommand CreateNewUser
+        public RelayCommand CreateNew
         {
             get
             {
-                return createNewUser ??
-                    (createNewUser = new RelayCommand(Add));
+                return create ??
+                    (create = new RelayCommand(Add));
             }
         }
 
-        public RelayCommand RedactNewUser
+        public RelayCommand RedactCommand
         {
             get
             {
-                return redactNewUser ??
-                    (redactNewUser = new RelayCommand(Redact));
+                return redact ??
+                    (redact = new RelayCommand(Redact));
             }
         }
-        public RelayCommand DeleteSelectedUser
+        public RelayCommand DeleteCommand
         {
             get
             {
-                return deleteSelectedUser ??
-                    (deleteSelectedUser = new RelayCommand(Delete));
+                return delete ??
+                    (delete = new RelayCommand(Delete));
             }
         }
 

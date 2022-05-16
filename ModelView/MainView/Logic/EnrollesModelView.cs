@@ -84,13 +84,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             SelectedDay = SelectedEnrolle.EnrolleGraduationDateTime.Day;
             SelectedMonth = SelectedEnrolle.EnrolleGraduationDateTime.Month;
             SelectedYear = SelectedEnrolle.EnrolleGraduationDateTime.Year;
-
-            GroupName = SelectedEnrolle.EnrolleGroup;
-            FlowName = SelectedEnrolle.EnrolleFlow;
         }
-
-        public string GroupName { get; set; }
-        public string FlowName { get; set; }
 
         public override void Redact(object obj)
         {
@@ -139,6 +133,9 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.EnrolleeSet.Add(enrollee);
             _db.SaveChanges();
+
+            MessageBox.Show("Изменение произведено успешно");
+
         }
 
         public override void Delete(object obj)

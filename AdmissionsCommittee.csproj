@@ -106,8 +106,11 @@
     <Compile Include="View\ExamStatementPage.xaml.cs">
       <DependentUpon>ExamStatementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FacultyPage.xaml.cs">
+    <Compile Include="View\Faculty\FacultyPage.xaml.cs">
       <DependentUpon>FacultyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Faculty\RedactFacultyWindow.xaml.cs">
+      <DependentUpon>RedactFacultyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FlowsPage.xaml.cs">
       <DependentUpon>FlowsPage.xaml</DependentUpon>
@@ -220,7 +223,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FacultyPage.xaml">
+    <Page Include="View\Faculty\FacultyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Faculty\RedactFacultyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

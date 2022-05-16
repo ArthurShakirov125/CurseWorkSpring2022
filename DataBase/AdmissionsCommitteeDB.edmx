@@ -452,7 +452,7 @@
           <End Type="AdmissionsCommitteeDB.Exam_sheet" Role="Exam_sheet" Multiplicity="1" />
         </Association>
         <Association Name="Exam_sheetGroup">
-          <End Type="AdmissionsCommitteeDB.Exam_sheet" Role="Exam_sheet" Multiplicity="1" />
+          <End Type="AdmissionsCommitteeDB.Exam_sheet" Role="Exam_sheet" Multiplicity="*" />
           <End Type="AdmissionsCommitteeDB.Group" Role="Group" Multiplicity="1" />
         </Association>
         <EntityType Name="Exam_statement">

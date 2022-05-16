@@ -45,8 +45,8 @@ namespace AdmissionsCommittee.ModelView.MainView
         {
             var fac = new Faculty()
             {
-                Name = selectedFaculty.Name,
-                Competition = selectedFaculty.Competition,
+                Name = Faculty.Name,
+                Competition = Faculty.Competition,
             };
 
             _db.FacultySet.Add(fac);

@@ -36,7 +36,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Height="500">
             <Button Style="{StaticResource buttons}" Content="Redact" Click="ReadactSelectedUser" Command="{Binding TakeSelectedUser}"></Button>
-            <Button Style="{StaticResource buttons}" Content="Delete" Command="{Binding DeleteSelectedUser}"></Button>
+            <Button Style="{StaticResource buttons}" Content="Delete" Command="{Binding DeleteCommand}"></Button>
             <Button Style="{StaticResource buttons}" Content="Create new" Click="CreateNewUser"></Button>
         </StackPanel>
     </Grid>
