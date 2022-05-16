@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Flow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,13 @@ namespace AdmissionsCommittee.View
     public partial class FlowsPage : Page
     {
         private NavigationService _navigationService;
-
+        protected FlowSetModelView flowModelView;
         public FlowsPage(NavigationService navigationService)
         {
             InitializeComponent();
             this._navigationService = navigationService;
-            DataContext = new FlowSetModleView();
+            flowModelView = new FlowSetModelView();
+            DataContext = flowModelView;
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -74,6 +76,13 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void AddWin(object sender, RoutedEventArgs e)
+        {
+            RedactFlow win = new RedactFlow();
+            win.DataContext = flowModelView;
+            win.Show();
         }
     }
 }

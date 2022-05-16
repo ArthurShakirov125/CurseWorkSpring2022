@@ -39,7 +39,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             Exam_statement ex = new Exam_statement()
             {
@@ -53,16 +53,21 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var ex = _db.Exam_statementSet.Find(Exam.examStatement.Id);
             _db.Exam_statementSet.Remove(ex);
             _db.SaveChanges();
+        }
+
+        protected override void Clear(object obj)
+        {
+            Exam = new ExamStatementViewModel(new Exam_statement());
         }
     }
 }

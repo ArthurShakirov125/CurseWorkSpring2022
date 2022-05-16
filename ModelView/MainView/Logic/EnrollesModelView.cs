@@ -86,7 +86,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             SelectedYear = SelectedEnrolle.EnrolleGraduationDateTime.Year;
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
             Enrollee enrollee = _db.EnrolleeSet.Where(u => u.Id == SelectedEnrolle.enrolee.Id).First();
 
@@ -107,7 +107,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             MessageBox.Show("Изменение произведено успешно");
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             Enrollee enrollee = new Enrollee();
 
@@ -138,11 +138,16 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var enrl = _db.EnrolleeSet.Find(SelectedEnrolle.enrolee.Id);
             _db.EnrolleeSet.Remove(enrl);
             _db.SaveChanges();
+        }
+
+        protected override void Clear(object obj)
+        {
+            SelectedEnrolle = new EnrolleModleView(new Enrollee());
         }
     }
 }

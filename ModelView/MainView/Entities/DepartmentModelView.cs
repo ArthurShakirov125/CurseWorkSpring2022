@@ -32,12 +32,9 @@ namespace AdmissionsCommittee.ModelView.MainView
         public string Faculty
         {
             get { return _model.Faculty.Name; }
-            set 
+            set
             {
-                var faculty = _db.FacultySet.Where(f => f.Name == value).First();
-
-                _model.Faculty = faculty;
-                _db.SaveChanges();
+                _model.Faculty = _db.FacultySet.First(f => f.Name == value);
                 OnPropertyChanged();
             }
         }

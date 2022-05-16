@@ -86,7 +86,7 @@
     <Compile Include="ModelView\MainView\Entities\FacultyModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\FacultySetModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\FlowModelView.cs" />
-    <Compile Include="ModelView\MainView\Logic\FlowSetModleView.cs" />
+    <Compile Include="ModelView\MainView\Logic\FlowSetModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\GroupModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\GroupSetModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\SubjectModelView.cs" />
@@ -94,8 +94,11 @@
     <Compile Include="View\ConsultPage.xaml.cs">
       <DependentUpon>ConsultPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DepartmentPage.xaml.cs">
+    <Compile Include="View\Department\DepartmentPage.xaml.cs">
       <DependentUpon>DepartmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Department\RedactDepartment.xaml.cs">
+      <DependentUpon>RedactDepartment.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
@@ -112,8 +115,11 @@
     <Compile Include="View\Faculty\RedactFacultyWindow.xaml.cs">
       <DependentUpon>RedactFacultyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FlowsPage.xaml.cs">
+    <Compile Include="View\Flow\FlowsPage.xaml.cs">
       <DependentUpon>FlowsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Flow\RedactFlow.xaml.cs">
+      <DependentUpon>RedactFlow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GroupsPage.xaml.cs">
       <DependentUpon>GroupsPage.xaml</DependentUpon>
@@ -207,7 +213,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DepartmentPage.xaml">
+    <Page Include="View\Department\DepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Department\RedactDepartment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +241,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FlowsPage.xaml">
+    <Page Include="View\Flow\FlowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Flow\RedactFlow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

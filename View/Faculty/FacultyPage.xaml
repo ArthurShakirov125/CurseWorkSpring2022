@@ -42,7 +42,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
             <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="RedactWindowBtn"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационную ведомость"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Добавить" Click="RedactWindowBtn" Command="{Binding ClearCommand}"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}"></Button>
         </StackPanel>
 

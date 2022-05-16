@@ -1,14 +1,14 @@
-﻿<Page x:Class="AdmissionsCommittee.View.FlowsPage"
+﻿<Page x:Class="AdmissionsCommittee.View.DepartmentPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AdmissionsCommittee.View"
-       xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
-      d:DataContext="{d:DesignInstance Type=viewModel:FlowSetModleView}"
+            xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
+      d:DataContext="{d:DesignInstance Type=viewModel:DepartmentSetModelView}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="FlowsPage">
+      d:DesignHeight="760" d:DesignWidth="1080"
+      Title="DepartmentPage">
 
     <Page.Resources>
         <Style x:Key="tileBtns">
@@ -41,18 +41,17 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационный лист"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационную ведомость"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Составить списки на зачесление"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="RedactWin"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Добавить" Command="{Binding ClearCommand}" Click="RedactWin" ></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}"></Button>
         </StackPanel>
 
 
-        <ListView SelectedItem="{Binding Flow}" ItemsSource="{Binding Flows}" Grid.Column="0" Grid.Row="1">
+        <ListView SelectedItem="{Binding DepartmentModel}" ItemsSource="{Binding Departments}" Grid.Column="0" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" Width="Auto" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
                     <GridViewColumn Header="Факультет" Width="Auto" DisplayMemberBinding="{Binding Path=Faculty}"></GridViewColumn>
-                    <GridViewColumn Header="Кафедра" Width="Auto" DisplayMemberBinding="{Binding Path=Department}"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

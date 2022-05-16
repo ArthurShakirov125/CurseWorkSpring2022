@@ -31,7 +31,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             exams = _db.Exam_scheduleSet.ToList().Select(e => new ExamModelView(e));
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             var ex = new Exam_schedule()
             {
@@ -45,16 +45,21 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var ex = _db.Exam_scheduleSet.Find(Exam.Exam.Id);
             _db.Exam_scheduleSet.Remove(ex);
             _db.SaveChanges();
+        }
+
+        protected override void Clear(object obj)
+        {
+            Exam = new ExamModelView(new Exam_schedule());
         }
     }
 }

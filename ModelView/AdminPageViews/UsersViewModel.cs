@@ -80,7 +80,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
                     (takeSelectedUser = new RelayCommand(takeUser));
             }
         }
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             _db.UserSet.Remove(SelectedUser.User);
             Users = Users.Where(u => u.Login != SelectedUser.Login);
@@ -92,7 +92,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             _selectedUserLogin = SelectedUser.Login;
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
             User user = _db.UserSet.Where(u => u.Login == _selectedUserLogin).First();
             user.Login = SelectedUser.Login;
@@ -102,7 +102,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             MessageBox.Show("Изменение произведено успешно");
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             if (Users.Any(user => user.Login == NewUser.Login))
             {
@@ -123,5 +123,9 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             }
         }
 
+        protected override void Clear(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

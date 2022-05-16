@@ -15,7 +15,18 @@ namespace AdmissionsCommittee.Abstract
         protected RelayCommand create;
         protected RelayCommand redact;
         protected RelayCommand delete;
+        protected RelayCommand clearCommand;
 
+        public RelayCommand ClearCommand
+        {
+            get
+            {
+                return clearCommand ??
+                    (clearCommand = new RelayCommand(Clear));
+            }
+        }
+
+        
 
         public RelayCommand CreateNew
         {
@@ -57,10 +68,12 @@ namespace AdmissionsCommittee.Abstract
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
-        public abstract void Add(object obj);
+        protected abstract void Add(object obj);
 
-        public abstract void Redact(object obj);
+        protected abstract void Redact(object obj);
 
-        public abstract void Delete(object obj);
+        protected abstract void Delete(object obj);
+
+        protected abstract void Clear(object obj);
     }
 }

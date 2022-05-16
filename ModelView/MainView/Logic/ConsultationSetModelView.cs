@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class ConsultationSetModelView :BaseModelView
+    public class ConsultationSetModelView : BaseModelView
     {
         private IEnumerable<ConsultationModelView> consultations;
 
@@ -39,7 +40,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             consultations = _db.ConsultationSet.ToList().Select(c => new ConsultationModelView(c));
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             var cons = new Consultation()
             {
@@ -51,19 +52,27 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.ConsultationSet.Add(cons);
             _db.SaveChanges();
+            MessageBox.Show("Добавление выполнено успешно");
 
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
+            MessageBox.Show("Редактирование выполнено успешно");
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var cons = _db.ConsultationSet.First(c => c.Id == consultation.Consultation.Id);
             _db.ConsultationSet.Remove(cons);
             _db.SaveChanges();
+            MessageBox.Show("Удаление выполнено успешно");
+        }
+
+        protected override void Clear(object obj)
+        {
+            Consultation = new ConsultationModelView(new Consultation());
         }
     }
 }

@@ -39,7 +39,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             Subjects = _db.SubjectSet.ToList().Select(s => new SubjectModelView(s));
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             var sub = new Subject()
             {
@@ -57,16 +57,21 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var sub = _db.SubjectSet.Find(Subject.Subject.Id);
             _db.SubjectSet.Remove(sub);
             _db.SaveChanges();
+        }
+
+        protected override void Clear(object obj)
+        {
+            Subject = new SubjectModelView(new Subject());
         }
     }
 }

@@ -40,7 +40,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             var grp = new Group()
             {
@@ -52,16 +52,21 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var grp = _db.GroupSet.Find(selectedGroup.Group.Id);
             _db.GroupSet.Remove(grp);
             _db.SaveChanges();
+        }
+
+        protected override void Clear(object obj)
+        {
+            SelectedGroup = new GroupModelView(new Group());
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
@@ -35,13 +36,19 @@ namespace AdmissionsCommittee.ModelView.MainView
         }
 
 
+        protected override void Clear(object obj)
+        {
+            Faculty = new FacultyModelView(new Faculty());
+        }
+
         public FacultySetModelView()
         {
             _db = new AdmissionsCommitteeDBContainer();
             Faculties = _db.FacultySet.ToList().Select(f => new FacultyModelView(f));
+            Faculty = new FacultyModelView(new Faculty());
         }
 
-        public override void Add(object obj)
+        protected override void Add(object obj)
         {
             var fac = new Faculty()
             {
@@ -51,18 +58,23 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.FacultySet.Add(fac);
             _db.SaveChanges();
+            Faculties = _db.FacultySet.ToList().Select(f => new FacultyModelView(f));
+            MessageBox.Show("Добавление выполнено успешно");
         }
 
-        public override void Redact(object obj)
+        protected override void Redact(object obj)
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
+            MessageBox.Show("Редактирование выполнено успешно");
         }
 
-        public override void Delete(object obj)
+        protected override void Delete(object obj)
         {
             var Facul = _db.FacultySet.Find(selectedFaculty.Faculty.Id);
             _db.FacultySet.Remove(Facul);
             _db.SaveChanges();
+            Faculties = _db.FacultySet.ToList().Select(f => new FacultyModelView(f));
+            MessageBox.Show("Удаление выполнено успешно");
         }
     }
 }

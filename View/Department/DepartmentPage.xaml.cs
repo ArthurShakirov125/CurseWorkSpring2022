@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Department;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,13 @@ namespace AdmissionsCommittee.View
     public partial class DepartmentPage : Page
     {
         private NavigationService _navigationService;
+        protected DepartmentSetModelView departmentSet;
 
         public DepartmentPage(NavigationService navigationService)
         {
             InitializeComponent();
-            DataContext = new DepartmentSetModelView();
+            departmentSet = new DepartmentSetModelView();
+            DataContext = departmentSet;
             this._navigationService = navigationService;
         }
 
@@ -74,6 +77,13 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void RedactWin(object sender, RoutedEventArgs e)
+        {
+            RedactDepartment redactDepartment = new RedactDepartment();
+            redactDepartment.DataContext = departmentSet;
+            redactDepartment.Show();
         }
     }
 }
