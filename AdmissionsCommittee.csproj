@@ -94,6 +94,9 @@
     <Compile Include="View\ConsultPage.xaml.cs">
       <DependentUpon>ConsultPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Department\AddDepartment.xaml.cs">
+      <DependentUpon>AddDepartment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Department\DepartmentPage.xaml.cs">
       <DependentUpon>DepartmentPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
     <Compile Include="View\Faculty\RedactFacultyWindow.xaml.cs">
       <DependentUpon>RedactFacultyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Flow\AddFlow.xaml.cs">
+      <DependentUpon>AddFlow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Flow\FlowsPage.xaml.cs">
       <DependentUpon>FlowsPage.xaml</DependentUpon>
     </Compile>
@@ -128,22 +134,25 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Security\Securitytron.cs" />
-    <Compile Include="View\AdminPage.xaml.cs">
+    <Compile Include="View\Admin\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AuthorizationPage.xaml.cs">
+    <Compile Include="View\Admin\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RedactEnrolleWindow.xaml.cs">
       <DependentUpon>RedactEnrolleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SubjectsPage.xaml.cs">
+    <Compile Include="View\Subject\AddSubject.xaml.cs">
+      <DependentUpon>AddSubject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Subject\SubjectsPage.xaml.cs">
       <DependentUpon>SubjectsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserCreateWindow.xaml.cs">
+    <Compile Include="View\Admin\UserCreateWindow.xaml.cs">
       <DependentUpon>UserCreateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserRedactWindow.xaml.cs">
+    <Compile Include="View\Admin\UserRedactWindow.xaml.cs">
       <DependentUpon>UserRedactWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -213,6 +222,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Department\AddDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Department\DepartmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +254,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Flow\AddFlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Flow\FlowsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,11 +274,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AdminPage.xaml">
+    <Page Include="View\Admin\AdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AuthorizationPage.xaml">
+    <Page Include="View\Admin\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,15 +286,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SubjectsPage.xaml">
+    <Page Include="View\Subject\AddSubject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserCreateWindow.xaml">
+    <Page Include="View\Subject\SubjectsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserRedactWindow.xaml">
+    <Page Include="View\Admin\UserCreateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\UserRedactWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

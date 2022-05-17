@@ -1,4 +1,4 @@
-﻿<Window x:Class="AdmissionsCommittee.View.Flow.RedactFlow"
+﻿<Window x:Class="AdmissionsCommittee.View.Flow.AddFlow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
         d:DataContext="{d:DesignInstance Type=viewModel:FlowSetModelView}"
         mc:Ignorable="d"
-        Title="RedactFlow" Height="300" Width="300">
+        Title="RedactFlow" Height="350" Width="400">
     <Window.Resources>
         <Style x:Key="textForForm">
             <Setter Property="Control.FontSize" Value="16"></Setter>
@@ -20,7 +20,11 @@
         <StackPanel>
             <TextBlock Text="Название"></TextBlock>
             <TextBox Text="{Binding Flow.Name}"></TextBox>
-            <Button Content="Сохранить" Command="{Binding RedactCommand}" Margin="0,15,0,0"></Button>
+            <TextBlock Text="Факультет"></TextBlock>
+            <ComboBox ItemsSource="{Binding Faculties}" SelectedItem="{Binding Flow.Faculty}"></ComboBox>
+            <TextBlock Text="Кафедра"></TextBlock>
+            <ComboBox ItemsSource="{Binding Departs}" SelectedItem="{Binding Flow.Department}"></ComboBox>
+            <Button Content="Добавить" Command="{Binding CreateNew}" Margin="0,15,0,0"></Button>
         </StackPanel>
     </Grid>
 </Window>

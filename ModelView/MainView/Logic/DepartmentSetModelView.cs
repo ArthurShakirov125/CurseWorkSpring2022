@@ -73,6 +73,7 @@ namespace AdmissionsCommittee.ModelView.MainView
         protected override void Redact(object obj)
         {
             _db.SaveChanges();
+            MessageBox.Show("Редактирование выполнено успешно");
         }
 
         protected override void Delete(object obj)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
 
@@ -44,7 +45,9 @@ namespace AdmissionsCommittee.ModelView.MainView
             var sub = new Subject()
             {
                 Name = Subject.Name,
-                Pass_points = Subject.PassPoints,
+                Pass_points_to_five = Subject.PassPointsToFive,
+                Pass_points_to_four = Subject.PassPointsToFour,
+                Pass_points_to_three = Subject.PassPointsToThree
             };
 
             Exam_statement ex = new Exam_statement()
@@ -55,11 +58,13 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.Exam_statementSet.Add(ex);
             _db.SubjectSet.Add(sub);
             _db.SaveChanges();
+            MessageBox.Show("Добавление произведено успешно");
         }
 
         protected override void Redact(object obj)
         {
             _db.SaveChanges();
+            MessageBox.Show("Изменение произведено успешно");
         }
 
         protected override void Delete(object obj)
@@ -67,6 +72,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             var sub = _db.SubjectSet.Find(Subject.Subject.Id);
             _db.SubjectSet.Remove(sub);
             _db.SaveChanges();
+            MessageBox.Show("Удаление произведено успешно");
         }
 
         protected override void Clear(object obj)

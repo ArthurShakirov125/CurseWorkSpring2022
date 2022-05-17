@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AdmissionsCommittee.ModelView.MainView
@@ -82,11 +83,13 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.FlowSet.Add(flow);
             _db.SaveChanges();
             Flows = _db.FlowSet.ToList().Select(f => new FlowModelView(f));
+            MessageBox.Show("Добавление выполнено успешно");
         }
 
         protected override void Redact(object obj)
         {
             _db.SaveChanges();
+            MessageBox.Show("Редактирование выполнено успешно");
         }
 
         protected override void Delete(object obj)
@@ -95,6 +98,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.FlowSet.Remove(flow);
             _db.SaveChanges();
             Flows = _db.FlowSet.ToList().Select(f => new FlowModelView(f));
+            MessageBox.Show("Удаление выполнено успешно");
         }
 
         protected override void Clear(object obj)

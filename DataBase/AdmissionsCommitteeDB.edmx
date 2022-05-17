@@ -95,7 +95,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Pass_points" Type="smallint" Nullable="false" />
+          <Property Name="Pass_points_to_three" Type="smallint" />
+          <Property Name="Pass_points_to_four" Type="smallint" />
+          <Property Name="Pass_points_to_five" Type="smallint" />
         </EntityType>
         <EntityType Name="UniversitySet">
           <Key>
@@ -475,10 +477,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Pass_points" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Exam_statement" Relationship="AdmissionsCommitteeDB.Exam_statementSubject" FromRole="Subject" ToRole="Exam_statement" />
           <NavigationProperty Name="Consultation" Relationship="AdmissionsCommitteeDB.ConsultationSubject" FromRole="Subject" ToRole="Consultation" />
           <NavigationProperty Name="Exam_schedule" Relationship="AdmissionsCommitteeDB.Exam_scheduleSubject" FromRole="Subject" ToRole="Exam_schedule" />
+          <Property Name="Pass_points_to_three" Type="Int16" />
+          <Property Name="Pass_points_to_four" Type="Int16" />
+          <Property Name="Pass_points_to_five" Type="Int16" />
         </EntityType>
         <Association Name="Exam_statementSubject">
           <End Type="AdmissionsCommitteeDB.Exam_statement" Role="Exam_statement" Multiplicity="1" />
@@ -610,9 +614,11 @@
     <EntitySetMapping Name="SubjectSet">
       <EntityTypeMapping TypeName="IsTypeOf(AdmissionsCommitteeDB.Subject)">
         <MappingFragment StoreEntitySet="SubjectSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pass_points_to_five" ColumnName="Pass_points_to_five" />
+                <ScalarProperty Name="Pass_points_to_four" ColumnName="Pass_points_to_four" />
+                <ScalarProperty Name="Pass_points_to_three" ColumnName="Pass_points_to_three" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Pass_points" ColumnName="Pass_points" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

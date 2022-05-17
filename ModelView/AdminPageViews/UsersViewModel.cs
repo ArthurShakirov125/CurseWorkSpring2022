@@ -16,8 +16,6 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 
         protected RelayCommand takeSelectedUser;
 
-        protected List<User> rawUsers { get; set; }
-
         public IEnumerable<UserViewModel> _users;
 
         public IEnumerable<UserViewModel> Users
@@ -63,13 +61,9 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
         {
             _db = new AdmissionsCommitteeDBContainer();
 
-            rawUsers = _db.UserSet.ToList();
+            Users = _db.UserSet.ToList().Select(u => new UserViewModel(u));
 
-            Users = rawUsers.Select(u => new UserViewModel(u));
-
-            var User = new User();
-
-            _newUser = new UserViewModel(User);
+            _newUser = new UserViewModel(new User());
 
         }
         public RelayCommand TakeSelectedUser
@@ -85,6 +79,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
             _db.UserSet.Remove(SelectedUser.User);
             Users = Users.Where(u => u.Login != SelectedUser.Login);
             _db.SaveChanges();
+            MessageBox.Show("Изменение произведено успешно");
         }
 
         private void takeUser(object obj)

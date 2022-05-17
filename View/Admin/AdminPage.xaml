@@ -12,9 +12,7 @@
     <Page.Resources>
         <Style x:Key="buttons">
             <Setter Property="Control.FontFamily" Value="Verdana" />
-            <Setter Property="Control.Margin" Value="10" />
-            <Setter Property="Control.Width" Value="200" />
-            <Setter Property="Control.Height" Value="50" />
+            <Setter Property="Control.Width" Value="220" />
         </Style>
     </Page.Resources>
     <Grid>
@@ -34,8 +32,8 @@
             </ListView.View>
         </ListView>
 
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Height="500">
-            <Button Style="{StaticResource buttons}" Content="Redact" Click="ReadactSelectedUser" Command="{Binding TakeSelectedUser}"></Button>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" Height="40">
+            <Button Style="{StaticResource buttons}" Content="Redact" Click="ReadactSelectedUser" Command="{Binding TakeSelectedUser}" Width="100"></Button>
             <Button Style="{StaticResource buttons}" Content="Delete" Command="{Binding DeleteCommand}"></Button>
             <Button Style="{StaticResource buttons}" Content="Create new" Click="CreateNewUser"></Button>
         </StackPanel>

@@ -35,12 +35,32 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public short PassPoints
+        public short? PassPointsToThree
         {
-            get { return _model.Pass_points; }
+            get { return _model.Pass_points_to_three; }
             set
             {
-                _model.Pass_points = value;
+                _model.Pass_points_to_three = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public short? PassPointsToFour
+        {
+            get { return _model.Pass_points_to_four; }
+            set
+            {
+                _model.Pass_points_to_four = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public short? PassPointsToFive
+        {
+            get { return _model.Pass_points_to_five; }
+            set
+            {
+                _model.Pass_points_to_five = value;
                 OnPropertyChanged();
             }
         }

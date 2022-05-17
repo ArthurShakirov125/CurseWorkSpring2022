@@ -85,5 +85,12 @@ namespace AdmissionsCommittee.View
             redactDepartment.DataContext = departmentSet;
             redactDepartment.Show();
         }
+
+        private void AddWin(object sender, RoutedEventArgs e)
+        {
+            AddDepartment redactDepartment = new AddDepartment();
+            redactDepartment.DataContext = departmentSet;
+            redactDepartment.Show();
+        }
     }
 }

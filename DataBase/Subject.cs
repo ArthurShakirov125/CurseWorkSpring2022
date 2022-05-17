@@ -16,7 +16,9 @@ namespace AdmissionsCommittee.DataBase
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public short Pass_points { get; set; }
+        public Nullable<short> Pass_points_to_three { get; set; }
+        public Nullable<short> Pass_points_to_four { get; set; }
+        public Nullable<short> Pass_points_to_five { get; set; }
     
         public virtual Exam_statement Exam_statement { get; set; }
         public virtual Consultation Consultation { get; set; }

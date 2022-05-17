@@ -80,6 +80,13 @@ namespace AdmissionsCommittee.View
 
         private void AddWin(object sender, RoutedEventArgs e)
         {
+            AddFlow win = new AddFlow();
+            win.DataContext = flowModelView;
+            win.Show();
+        }
+
+        private void RedactWin(object sender, RoutedEventArgs e)
+        {
             RedactFlow win = new RedactFlow();
             win.DataContext = flowModelView;
             win.Show();
