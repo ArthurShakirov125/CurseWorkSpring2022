@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Consults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,14 @@ namespace AdmissionsCommittee.View
     public partial class ConsultPage : Page
     {
         private NavigationService _navigationService;
-
+        private ConsultationSetModelView _context;
 
         public ConsultPage(NavigationService navigationService)
         {
             InitializeComponent();
             this._navigationService = navigationService;
-            DataContext = new ConsultationSetModelView();
+            _context = new ConsultationSetModelView();
+            DataContext = _context;
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -76,6 +78,20 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void AddWin(object sender, RoutedEventArgs e)
+        {
+            var win = new AddConsult();
+            win.DataContext = _context;
+            win.Show();
+        }
+
+        private void RedactWin(object sender, RoutedEventArgs e)
+        {
+            var win = new RedactConsult();
+            win.DataContext = _context;
+            win.Show();
         }
     }
 }

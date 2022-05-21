@@ -82,13 +82,10 @@ namespace AdmissionsCommittee.ModelView.MainView
             var ex = new Exam_schedule()
             {
                 Classroom = Exam.Classroom,
-                Flow = _db.FlowSet.First(f => f.Name == Exam.Flow)
-            };
-
-
-            ex.Subject = _db.SubjectSet.First(s => s.Name == Exam.SubjectName);
-            ex.Date = _dates.MakeADate();
-
+                Flow = _db.FlowSet.First(f => f.Name == Exam.Flow),
+                Subject = _db.SubjectSet.First(s => s.Name == Exam.SubjectName),
+                Date = _dates.MakeADate()
+        };
 
             _db.Exam_scheduleSet.Add(ex);
             _db.SaveChanges();

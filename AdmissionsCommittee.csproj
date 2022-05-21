@@ -91,8 +91,14 @@
     <Compile Include="ModelView\MainView\Logic\GroupSetModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\SubjectModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\SubjectSetModelView.cs" />
-    <Compile Include="View\ConsultPage.xaml.cs">
+    <Compile Include="View\Consults\AddConsult.xaml.cs">
+      <DependentUpon>AddConsult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Consults\ConsultPage.xaml.cs">
       <DependentUpon>ConsultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Consults\RedactConsult.xaml.cs">
+      <DependentUpon>RedactConsult.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Department\AddDepartment.xaml.cs">
       <DependentUpon>AddDepartment.xaml</DependentUpon>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="View\Department\RedactDepartment.xaml.cs">
       <DependentUpon>RedactDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Enrolle\AddEnrolle.xaml.cs">
+      <DependentUpon>AddEnrolle.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Enrolle\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
@@ -231,7 +240,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ConsultPage.xaml">
+    <Page Include="View\Consults\AddConsult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Consults\ConsultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Consults\RedactConsult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Department\RedactDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Enrolle\AddEnrolle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

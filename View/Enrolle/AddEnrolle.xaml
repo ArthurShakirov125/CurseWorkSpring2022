@@ -1,57 +1,62 @@
-﻿<Window x:Class="AdmissionsCommittee.View.RedactEnrolleWindow"
+﻿<Window x:Class="AdmissionsCommittee.View.Enrolle.AddEnrolle"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AdmissionsCommittee.View"
-        xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
+        xmlns:local="clr-namespace:AdmissionsCommittee.View.Enrolle"
+       xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
         d:DataContext="{d:DesignInstance Type=viewModel:EnrollesModelView}"
         mc:Ignorable="d"
         Title="RedactEnrolleWindow" Height="500" Width="800">
     <Grid Margin="50,20,50,20">
 
         <StackPanel>
-        <TextBlock Text="Фамилия" VerticalAlignment="Center"/>
-        <TextBox Grid.RowSpan="3" Height="20" 
+            <TextBlock Text="Фамилия" VerticalAlignment="Center"/>
+            <TextBox Grid.RowSpan="3" Height="20" 
                  Text="{Binding SelectedEnrolle.EnrolleSurename}"/>
 
-        <TextBlock Text="Имя" VerticalAlignment="Top"/>
-        <TextBox Height="20" 
+            <TextBlock Text="Имя" VerticalAlignment="Top"/>
+            <TextBox Height="20" 
                  Text="{Binding SelectedEnrolle.EnrolleName}"></TextBox>
 
-        <TextBlock Text="Отчество" VerticalAlignment="Top"/>
-        <TextBox Height="20" 
+            <TextBlock Text="Отчество" VerticalAlignment="Top"/>
+            <TextBox Height="20" 
                  Text="{Binding SelectedEnrolle.EnrolleLastname}"></TextBox>
 
-        <TextBlock Text="Паспорт" VerticalAlignment="Top"/>
+            <TextBlock Text="Паспорт" VerticalAlignment="Top"/>
             <TextBox  Height="20" 
                  Text="{Binding SelectedEnrolle.EnrollePassport}"></TextBox>
 
+            <TextBlock Text="Группа" VerticalAlignment="Top"/>
+            <ComboBox  Width="200" HorizontalAlignment="Left" Height="20"
+                  ItemsSource="{Binding Groups}"
+                  SelectedValue="{Binding SelectedEnrolle.EnrolleGroup}"/>
+
 
             <TextBlock  Text="Учебное заведение" VerticalAlignment="Bottom"/>
-        <TextBox Text="{Binding SelectedEnrolle.EnrolleEducation}"/>
+            <TextBox Text="{Binding SelectedEnrolle.EnrolleEducation}"/>
 
-        <TextBlock Text="Дата выпуска" VerticalAlignment="Center"/>
-        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Дата выпуска" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal">
                 <ComboBox  Width="100" ItemsSource="{Binding Date.days}" SelectedValue="{Binding Date.SelectedDay}"></ComboBox>
                 <ComboBox  Width="100" ItemsSource="{Binding Date.months}" SelectedValue="{Binding Date.SelectedMonth}"></ComboBox>
                 <ComboBox  Width="100" ItemsSource="{Binding Date.years}" SelectedValue="{Binding Date.SelectedYear}"></ComboBox>
-        </StackPanel>
+            </StackPanel>
 
 
-        <TextBlock Text="Золотая медаль" VerticalAlignment="Bottom"/>
-        <CheckBox VerticalAlignment="Bottom" 
+            <TextBlock Text="Золотая медаль" VerticalAlignment="Bottom"/>
+            <CheckBox VerticalAlignment="Bottom" 
                   IsChecked="{Binding SelectedEnrolle.EnrolleGoldenMedal}"></CheckBox>
 
-        <TextBlock Text="Серебрянная медаль" VerticalAlignment="Center"></TextBlock>
-        <CheckBox VerticalAlignment="Center"
+            <TextBlock Text="Серебрянная медаль" VerticalAlignment="Center"></TextBlock>
+            <CheckBox VerticalAlignment="Center"
                   IsChecked="{Binding SelectedEnrolle.EnrolleSilverMedal}"></CheckBox>
 
-            <Button Content="Сохранить" Command="{Binding RedactCommand}" Margin="0,0,40,0" Width="150"></Button>
+            <Button Content="Добавить" Command="{Binding CreateNew}" Width="150"></Button>
 
 
         </StackPanel>
 
-        
+
     </Grid>
 </Window>
