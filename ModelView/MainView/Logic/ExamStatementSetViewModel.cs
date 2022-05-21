@@ -43,8 +43,6 @@ namespace AdmissionsCommittee.ModelView.MainView
         {
             Exam_statement ex = new Exam_statement()
             {
-                Enrollee = Exam.Enrolle,
-                Subject = _db.SubjectSet.First(s => s.Name == Exam.Subject),
                 Mark = Exam.Mark,
                 Points = Exam.Points
             };

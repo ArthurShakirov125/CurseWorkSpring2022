@@ -14,14 +14,22 @@ namespace AdmissionsCommittee.DataBase
     
     public partial class Subject
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Subject()
+        {
+            this.Consultation = new HashSet<Consultation>();
+            this.Exam_schedule = new HashSet<Exam_schedule>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<short> Pass_points_to_three { get; set; }
         public Nullable<short> Pass_points_to_four { get; set; }
         public Nullable<short> Pass_points_to_five { get; set; }
     
-        public virtual Exam_statement Exam_statement { get; set; }
-        public virtual Consultation Consultation { get; set; }
-        public virtual Exam_schedule Exam_schedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consultation> Consultation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exam_schedule> Exam_schedule { get; set; }
     }
 }

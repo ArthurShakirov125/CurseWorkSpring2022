@@ -103,14 +103,20 @@
     <Compile Include="View\Department\RedactDepartment.xaml.cs">
       <DependentUpon>RedactDepartment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EnrollePage.xaml.cs">
+    <Compile Include="View\Enrolle\EnrollePage.xaml.cs">
       <DependentUpon>EnrollePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExamsPage.xaml.cs">
+    <Compile Include="View\Exams\AddExam.xaml.cs">
+      <DependentUpon>AddExam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exams\ExamsPage.xaml.cs">
       <DependentUpon>ExamsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExamStatementPage.xaml.cs">
       <DependentUpon>ExamStatementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exams\RedactExam.xaml.cs">
+      <DependentUpon>RedactExam.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Faculty\FacultyPage.xaml.cs">
       <DependentUpon>FacultyPage.xaml</DependentUpon>
@@ -127,9 +133,16 @@
     <Compile Include="View\Flow\RedactFlow.xaml.cs">
       <DependentUpon>RedactFlow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GroupsPage.xaml.cs">
+    <Compile Include="View\Group\AddGroup.xaml.cs">
+      <DependentUpon>AddGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Group\GroupsPage.xaml.cs">
       <DependentUpon>GroupsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Group\RedactGroup.xaml.cs">
+      <DependentUpon>RedactGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Helper\Dates.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -140,7 +153,7 @@
     <Compile Include="View\Admin\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RedactEnrolleWindow.xaml.cs">
+    <Compile Include="View\Enrolle\RedactEnrolleWindow.xaml.cs">
       <DependentUpon>RedactEnrolleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Subject\AddSubject.xaml.cs">
@@ -234,15 +247,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EnrollePage.xaml">
+    <Page Include="View\Enrolle\EnrollePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExamsPage.xaml">
+    <Page Include="View\Exams\AddExam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Exams\ExamsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExamStatementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Exams\RedactExam.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,7 +287,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GroupsPage.xaml">
+    <Page Include="View\Group\AddGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Group\GroupsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Group\RedactGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,7 +311,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RedactEnrolleWindow.xaml">
+    <Page Include="View\Enrolle\RedactEnrolleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

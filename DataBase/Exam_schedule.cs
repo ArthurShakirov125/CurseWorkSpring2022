@@ -14,11 +14,19 @@ namespace AdmissionsCommittee.DataBase
     
     public partial class Exam_schedule
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Exam_schedule()
+        {
+            this.Exam_statement = new HashSet<Exam_statement>();
+        }
+    
         public int Id { get; set; }
         public string Classroom { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual Flow Flow { get; set; }
         public virtual Subject Subject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exam_statement> Exam_statement { get; set; }
     }
 }

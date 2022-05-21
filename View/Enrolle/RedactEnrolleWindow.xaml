@@ -42,9 +42,9 @@
 
         <TextBlock Text="Дата выпуска" VerticalAlignment="Center"/>
         <StackPanel Orientation="Horizontal">
-            <ComboBox  Width="100" ItemsSource="{Binding days}" SelectedValue="{Binding SelectedDay}"></ComboBox>
-            <ComboBox  Width="100" ItemsSource="{Binding months}" SelectedValue="{Binding SelectedMonth}"></ComboBox>
-             <ComboBox  Width="100" ItemsSource="{Binding years}" SelectedValue="{Binding SelectedYear}"></ComboBox>
+                <ComboBox  Width="100" ItemsSource="{Binding Date.days}" SelectedValue="{Binding Date.SelectedDay}"></ComboBox>
+                <ComboBox  Width="100" ItemsSource="{Binding Date.months}" SelectedValue="{Binding Date.SelectedMonth}"></ComboBox>
+                <ComboBox  Width="100" ItemsSource="{Binding Date.years}" SelectedValue="{Binding Date.SelectedYear}"></ComboBox>
         </StackPanel>
 
 

@@ -17,8 +17,9 @@ namespace AdmissionsCommittee.DataBase
         public int Id { get; set; }
         public Nullable<byte> Mark { get; set; }
         public Nullable<short> Points { get; set; }
+        public string Enrolle_last_name { get; set; }
+        public int Exam_sheet_number { get; set; }
     
-        public virtual Enrollee Enrollee { get; set; }
-        public virtual Subject Subject { get; set; }
+        public virtual Exam_schedule Exam_schedule { get; set; }
     }
 }

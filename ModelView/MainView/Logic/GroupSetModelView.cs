@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
@@ -14,7 +15,29 @@ namespace AdmissionsCommittee.ModelView.MainView
         public GroupSetModelView()
         {
             groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
+
+            SelectedGroup = new GroupModelView(new Group()
+            {
+                Flow = new Flow()
+                {
+                    Department = new Department()
+                    {
+                        Faculty = new Faculty()
+                    }
+                }
+            });
+
+            Flows = _db.FlowSet.Select(f => f.Name).ToList();
         }
+
+        private List<string> flows;
+
+        public List<string> Flows
+        {
+            get { return flows; }
+            set { flows = value; }
+        }
+
 
         private IEnumerable<GroupModelView> groups;
 
@@ -42,6 +65,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Add(object obj)
         {
+            if (selectedGroup.Name == null || selectedGroup.Flow == null)
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля");
+                return;
+            }
             var grp = new Group()
             {
                 Name = selectedGroup.Name,
@@ -50,6 +78,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.GroupSet.Add(grp);
             _db.SaveChanges();
+            Groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
         }
 
         protected override void Redact(object obj)
@@ -62,11 +91,21 @@ namespace AdmissionsCommittee.ModelView.MainView
             var grp = _db.GroupSet.Find(selectedGroup.Group.Id);
             _db.GroupSet.Remove(grp);
             _db.SaveChanges();
+            Groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
         }
 
         protected override void Clear(object obj)
         {
-            SelectedGroup = new GroupModelView(new Group());
+            SelectedGroup = new GroupModelView(new Group()
+            {
+                Flow = new Flow()
+                {
+                    Department = new Department()
+                    {
+                        Faculty = new Faculty()
+                    }
+                }
+            });
         }
     }
 }

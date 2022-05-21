@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Exams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,17 +18,19 @@ using System.Windows.Shapes;
 namespace AdmissionsCommittee.View
 {
     /// <summary>
-    /// Логика взаимодействия для GroupsPage.xaml
+    /// Логика взаимодействия для ExamsPage.xaml
     /// </summary>
-    public partial class GroupsPage : Page
+    public partial class ExamsPage : Page
     {
         private NavigationService _navigationService;
+        private ExamSetModelView _context;
 
-        public GroupsPage(NavigationService navigationService)
+        public ExamsPage(NavigationService navigationService)
         {
             InitializeComponent();
             this._navigationService = navigationService;
-            DataContext = new GroupSetModelView();
+            _context = new ExamSetModelView();
+            DataContext = _context;
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -44,8 +47,6 @@ namespace AdmissionsCommittee.View
 
         private void ToExamsPage(object sender, RoutedEventArgs e)
         {
-            ExamsPage page = new ExamsPage(_navigationService);
-            _navigationService.Navigate(page);
         }
 
         private void ToConsultsPage(object sender, RoutedEventArgs e)
@@ -62,6 +63,8 @@ namespace AdmissionsCommittee.View
 
         private void ToGroupsPage(object sender, RoutedEventArgs e)
         {
+            GroupsPage page = new GroupsPage(_navigationService);
+            _navigationService.Navigate(page);
         }
 
         private void ToDepartsPage(object sender, RoutedEventArgs e)
@@ -74,6 +77,20 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void AddWin(object sender, RoutedEventArgs e)
+        {
+            AddExam win = new AddExam();
+            win.DataContext = _context;
+            win.Show();
+        }
+
+        private void RedactWin(object sender, RoutedEventArgs e)
+        {
+            RedactExam win = new RedactExam();
+            win.DataContext = _context;
+            win.Show();
         }
     }
 }

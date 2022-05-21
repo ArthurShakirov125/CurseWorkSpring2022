@@ -26,23 +26,9 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         public string Subject
         {
-            get { return _model.Subject.Name; }
-            set
-            {
-                _model.Subject.Name = value;
-                OnPropertyChanged();
-            }
+            get { return _model.Exam_schedule.Subject.Name; }
         }
 
-        public Enrollee Enrolle
-        {
-            get { return _model.Enrollee; }
-            set
-            {
-                _model.Enrollee = value;
-                OnPropertyChanged();
-            }
-        }
 
         public short? Points
         {

@@ -38,6 +38,7 @@ namespace AdmissionsCommittee.ModelView.MainView
         public SubjectSetModelView()
         {
             Subjects = _db.SubjectSet.ToList().Select(s => new SubjectModelView(s));
+            Subject = new SubjectModelView(new Subject());
         }
 
         protected override void Add(object obj)
@@ -50,12 +51,6 @@ namespace AdmissionsCommittee.ModelView.MainView
                 Pass_points_to_three = Subject.PassPointsToThree
             };
 
-            Exam_statement ex = new Exam_statement()
-            {
-                Subject = sub,
-            };
-
-            _db.Exam_statementSet.Add(ex);
             _db.SubjectSet.Add(sub);
             _db.SaveChanges();
             MessageBox.Show("Добавление произведено успешно");

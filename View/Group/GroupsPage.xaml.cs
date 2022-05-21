@@ -1,4 +1,5 @@
 ﻿using AdmissionsCommittee.ModelView.MainView;
+using AdmissionsCommittee.View.Group;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,19 @@ using System.Windows.Shapes;
 namespace AdmissionsCommittee.View
 {
     /// <summary>
-    /// Логика взаимодействия для ExamsPage.xaml
+    /// Логика взаимодействия для GroupsPage.xaml
     /// </summary>
-    public partial class ExamsPage : Page
+    public partial class GroupsPage : Page
     {
         private NavigationService _navigationService;
+        private GroupSetModelView _context;
 
-
-        public ExamsPage(NavigationService navigationService)
+        public GroupsPage(NavigationService navigationService)
         {
             InitializeComponent();
             this._navigationService = navigationService;
-            DataContext = new ExamSetModelView();
+            _context = new GroupSetModelView();
+            DataContext = _context;
         }
 
         private void ToEnrollePage(object sender, RoutedEventArgs e)
@@ -45,6 +47,8 @@ namespace AdmissionsCommittee.View
 
         private void ToExamsPage(object sender, RoutedEventArgs e)
         {
+            ExamsPage page = new ExamsPage(_navigationService);
+            _navigationService.Navigate(page);
         }
 
         private void ToConsultsPage(object sender, RoutedEventArgs e)
@@ -61,8 +65,6 @@ namespace AdmissionsCommittee.View
 
         private void ToGroupsPage(object sender, RoutedEventArgs e)
         {
-            GroupsPage page = new GroupsPage(_navigationService);
-            _navigationService.Navigate(page);
         }
 
         private void ToDepartsPage(object sender, RoutedEventArgs e)
@@ -75,6 +77,20 @@ namespace AdmissionsCommittee.View
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
+        }
+
+        private void RedactWin(object sender, RoutedEventArgs e)
+        {
+            RedactGroup win = new RedactGroup();
+            win.DataContext = _context;
+            win.Show();
+        }
+
+        private void AddWin(object sender, RoutedEventArgs e)
+        {
+            AddGroup win = new AddGroup();
+            win.DataContext = _context;
+            win.Show();
         }
     }
 }

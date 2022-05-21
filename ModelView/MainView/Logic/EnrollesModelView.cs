@@ -1,5 +1,6 @@
 ﻿using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
+using AdmissionsCommittee.View.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,23 @@ namespace AdmissionsCommittee.ModelView.MainView
         public List<string> Groups { get; set; }
         public List<string> Flows { get; set; }
 
+        private Dates _dates;
+
+        public Dates Date
+        {
+            get { return _dates; }
+            set { _dates = value; }
+        }
+
+
         public EnrollesModelView()
         {
             enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
 
             Flows = _db.FlowSet.Select(f => f.Name).ToList();
             Groups = _db.GroupSet.Select(g => g.Name).ToList();
+
+            _dates = new Dates();
             
         }
 
@@ -36,7 +48,6 @@ namespace AdmissionsCommittee.ModelView.MainView
         }
 
         private EnrolleModleView selectedEnrolle;
-        private RelayCommand redactEnrolle;
 
         public EnrolleModleView SelectedEnrolle
         {
@@ -48,42 +59,13 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public int[] days { get; set; }
 
-        public int SelectedDay { get; set; }
-
-        public int[] months { get; set; }
-
-        public int SelectedMonth { get; set; }
-
-        public int[] years { get; set; }
-
-        public int SelectedYear { get; set; }
 
         public void initializeDates()
         {
-            days = new int[31];
-
-            for (int i = 0; i < 31; i++)
-            {
-                days[i] = i + 1;
-            }
-
-            months = new int[12];
-            for (int i = 0; i < 12; i++)
-            {
-                months[i] = i + 1;
-            }
-
-            years = new int[50];
-
-            for (int i = 0; i < 50; i++)
-            {
-                years[i] = 1980 + i;
-            }
-            SelectedDay = SelectedEnrolle.EnrolleGraduationDateTime.Day;
-            SelectedMonth = SelectedEnrolle.EnrolleGraduationDateTime.Month;
-            SelectedYear = SelectedEnrolle.EnrolleGraduationDateTime.Year;
+            _dates.SelectedDay = SelectedEnrolle.EnrolleGraduationDateTime.Day;
+            _dates.SelectedMonth = SelectedEnrolle.EnrolleGraduationDateTime.Month;
+            _dates.SelectedYear = SelectedEnrolle.EnrolleGraduationDateTime.Year;
         }
 
         protected override void Redact(object obj)
@@ -98,7 +80,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             enrollee.Golden_medal = selectedEnrolle.EnrolleGoldenMedal;
             enrollee.Silver_medal = selectedEnrolle.EnrolleSilverMedal;
 
-            string date = string.Join("/", SelectedDay, SelectedMonth, SelectedYear);
+            string date = string.Join("/", _dates.SelectedDay, _dates.SelectedMonth, _dates.SelectedYear);
             enrollee.Graduation = DateTime.Parse(date);
             selectedEnrolle.EnrolleGraduation = date;
 
@@ -119,7 +101,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             enrollee.Golden_medal = selectedEnrolle.EnrolleGoldenMedal;
             enrollee.Silver_medal = selectedEnrolle.EnrolleSilverMedal;
 
-            string date = string.Join("/", SelectedDay, SelectedMonth, SelectedYear);
+            string date = string.Join("/", _dates.SelectedDay, _dates.SelectedMonth, _dates.SelectedYear);
             enrollee.Graduation = DateTime.Parse(date);
 
             Exam_sheet _Sheet = new Exam_sheet()

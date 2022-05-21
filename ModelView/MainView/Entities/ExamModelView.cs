@@ -30,9 +30,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             get { return _model.Subject.Name; }
             set
             {
-                var subject = _db.SubjectSet.Where(s => s.Name == value).First();
-
-                _model.Subject = subject;
+                _model.Subject = _db.SubjectSet.Where(s => s.Name == value).First();
                 _db.SaveChanges();
                 OnPropertyChanged(); ;
             }
