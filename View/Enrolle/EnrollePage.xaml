@@ -58,9 +58,9 @@
         </ListView>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Style="{StaticResource bigBtns}" Content="Добавить абитуриента"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Добавить абитуриента" Command="{Binding ClearCommand}" Click="Add"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="Redact"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Удалить"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}"></Button>
         </StackPanel>
     </Grid>
 </Page>

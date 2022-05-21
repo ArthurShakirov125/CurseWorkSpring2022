@@ -13,7 +13,6 @@ namespace AdmissionsCommittee.ModelView.MainView
     public class EnrollesModelView : BaseModelView
     {
         public List<string> Groups { get; set; }
-        public List<string> Flows { get; set; }
 
         private Dates _dates;
 
@@ -28,7 +27,6 @@ namespace AdmissionsCommittee.ModelView.MainView
         {
             enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
 
-            Flows = _db.FlowSet.Select(f => f.Name).ToList();
             Groups = _db.GroupSet.Select(g => g.Name).ToList();
 
             _dates = new Dates();
@@ -87,6 +85,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.SaveChanges();
             MessageBox.Show("Изменение произведено успешно");
+            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
         }
 
         protected override void Add(object obj)
@@ -117,6 +116,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
 
             MessageBox.Show("Изменение произведено успешно");
+            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
 
         }
 
@@ -125,11 +125,20 @@ namespace AdmissionsCommittee.ModelView.MainView
             var enrl = _db.EnrolleeSet.Find(SelectedEnrolle.enrolee.Id);
             _db.EnrolleeSet.Remove(enrl);
             _db.SaveChanges();
+            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
         }
 
         protected override void Clear(object obj)
         {
-            SelectedEnrolle = new EnrolleModleView(new Enrollee());
+            SelectedEnrolle = new EnrolleModleView(new Enrollee()
+            {
+                Exam_sheet = new Exam_sheet()
+                {
+                    Group = new Group()
+                    {
+                    }
+                }
+            });
         }
     }
 }

@@ -40,6 +40,13 @@ namespace AdmissionsCommittee.View
             win.Show();
         }
 
+        private void Add(object sender, RoutedEventArgs e)
+        {
+            var win = new RedactEnrolleWindow();
+            win.DataContext = enrollesModelView;
+            win.Show();
+        }
+
         private void ToFacultysPage(object sender, RoutedEventArgs e)
         {
             FacultyPage page = new FacultyPage(_navigationService);
@@ -86,5 +93,7 @@ namespace AdmissionsCommittee.View
         {
 
         }
+
+        
     }
 }
