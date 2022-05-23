@@ -50,6 +50,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Add(object obj)
         {
+            if (Faculty.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             var fac = new Faculty()
             {
                 Name = Faculty.Name,
@@ -64,6 +69,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Redact(object obj)
         {
+            if (Faculty.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             _db.SaveChanges();
             MessageBox.Show("Редактирование выполнено успешно");
         }

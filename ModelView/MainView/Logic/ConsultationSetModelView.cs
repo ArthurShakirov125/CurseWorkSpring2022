@@ -81,6 +81,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Add(object obj)
         {
+            if (Consultation.Date == null || Consultation.Classroom == null || Consultation.Flow == null || Consultation.SubjectName == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             var cons = new Consultation()
             {
                 Classroom = Consultation.Classroom,
@@ -98,6 +103,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Redact(object obj)
         {
+            if (Consultation.Date == null || Consultation.Classroom == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             Consultation.Consultation.Date = _dates.MakeADate();
             _db.SaveChanges();
             MessageBox.Show("Редактирование выполнено успешно");

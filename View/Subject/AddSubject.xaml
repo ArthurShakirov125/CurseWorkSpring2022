@@ -26,7 +26,6 @@
             <TextBox Text="{Binding Subject.PassPointsToFour}" PreviewTextInput="NumberValidationTextBox"></TextBox>
             <TextBlock Text="Проходной балл на 5"></TextBlock>
             <TextBox Text="{Binding Subject.PassPointsToFive}" PreviewTextInput="NumberValidationTextBox"></TextBox>
-            <TextBlock Text="Факультет"></TextBlock>
             <Button Content="Добавить" Command="{Binding CreateNew}" Margin="0,15,0,0"></Button>
             <Button Content="Сохранить" Command="{Binding RedactCommand}" Margin="0,15,0,0"></Button>
         </StackPanel>

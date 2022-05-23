@@ -78,11 +78,18 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.GroupSet.Add(grp);
             _db.SaveChanges();
+            MessageBox.Show("Добавление произведено успешно");
             Groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
         }
 
         protected override void Redact(object obj)
         {
+            if (selectedGroup.Name == null)
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля");
+                return;
+            }
+            MessageBox.Show("Изменение произведено успешно");
             _db.SaveChanges();
         }
 
@@ -91,6 +98,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             var grp = _db.GroupSet.Find(selectedGroup.Group.Id);
             _db.GroupSet.Remove(grp);
             _db.SaveChanges();
+            MessageBox.Show("Удаление произведено успешно");
             Groups = _db.GroupSet.ToList().Select(g => new GroupModelView(g));
         }
 
@@ -100,10 +108,6 @@ namespace AdmissionsCommittee.ModelView.MainView
             {
                 Flow = new Flow()
                 {
-                    Department = new Department()
-                    {
-                        Faculty = new Faculty()
-                    }
                 }
             });
         }

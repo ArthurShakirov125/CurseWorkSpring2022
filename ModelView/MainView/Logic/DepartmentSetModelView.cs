@@ -58,6 +58,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Add(object obj)
         {
+            if (DepartmentModel.Name == null || DepartmentModel.Faculty == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             var dep = new Department()
             {
                 Name = DepartmentModel.Name,
@@ -72,6 +77,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Redact(object obj)
         {
+            if (DepartmentModel.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             _db.SaveChanges();
             MessageBox.Show("Редактирование выполнено успешно");
         }

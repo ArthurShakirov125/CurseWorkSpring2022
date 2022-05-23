@@ -43,6 +43,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Add(object obj)
         {
+            if (Subject.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             var sub = new Subject()
             {
                 Name = Subject.Name,
@@ -54,10 +59,16 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SubjectSet.Add(sub);
             _db.SaveChanges();
             MessageBox.Show("Добавление произведено успешно");
+            Subjects = _db.SubjectSet.ToList().Select(s => new SubjectModelView(s));
         }
 
         protected override void Redact(object obj)
         {
+            if (Subject.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             _db.SaveChanges();
             MessageBox.Show("Изменение произведено успешно");
         }
@@ -68,6 +79,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SubjectSet.Remove(sub);
             _db.SaveChanges();
             MessageBox.Show("Удаление произведено успешно");
+            Subjects = _db.SubjectSet.ToList().Select(s => new SubjectModelView(s));
         }
 
         protected override void Clear(object obj)

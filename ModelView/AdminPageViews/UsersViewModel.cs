@@ -76,6 +76,7 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
         }
         protected override void Delete(object obj)
         {
+            
             _db.UserSet.Remove(SelectedUser.User);
             Users = Users.Where(u => u.Login != SelectedUser.Login);
             _db.SaveChanges();
@@ -89,6 +90,11 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 
         protected override void Redact(object obj)
         {
+            if (SelectedUser.Login == null || Password == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             User user = _db.UserSet.Where(u => u.Login == _selectedUserLogin).First();
             user.Login = SelectedUser.Login;
             user.Password = Securitytron.MadeHashCode(Password);
@@ -99,6 +105,11 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 
         protected override void Add(object obj)
         {
+            if (NewUser.Login == null || NewUser.Password == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             if (Users.Any(user => user.Login == NewUser.Login))
             {
                 MessageBox.Show("Пользователь с таким логином уже существует");

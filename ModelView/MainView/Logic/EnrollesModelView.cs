@@ -68,6 +68,17 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Redact(object obj)
         {
+            if (selectedEnrolle.EnrolleName == null ||
+                selectedEnrolle.EnrollePassport == null ||
+                selectedEnrolle.EnrolleLastname == null ||
+                selectedEnrolle.EnrolleSurename == null ||
+                selectedEnrolle.EnrolleEducation == null ||
+                selectedEnrolle.EnrolleGraduationDateTime == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
+
             Enrollee enrollee = _db.EnrolleeSet.Where(u => u.Id == SelectedEnrolle.enrolee.Id).First();
 
             enrollee.Name = selectedEnrolle.EnrolleName;
@@ -85,11 +96,23 @@ namespace AdmissionsCommittee.ModelView.MainView
 
             _db.SaveChanges();
             MessageBox.Show("Изменение произведено успешно");
-            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
         }
 
         protected override void Add(object obj)
         {
+            if (selectedEnrolle.EnrolleName == null ||
+                selectedEnrolle.EnrollePassport == null ||
+                selectedEnrolle.EnrolleLastname == null ||
+                selectedEnrolle.EnrolleSurename == null ||
+                selectedEnrolle.EnrolleEducation == null ||
+                selectedEnrolle.EnrolleGraduationDateTime == null ||
+                selectedEnrolle.EnrolleGroup == null ||
+                selectedEnrolle.EnrolleFlow == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
+
             Enrollee enrollee = new Enrollee();
 
             enrollee.Name = selectedEnrolle.EnrolleName;
@@ -115,17 +138,20 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.EnrolleeSet.Add(enrollee);
             _db.SaveChanges();
 
-            MessageBox.Show("Изменение произведено успешно");
-            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            MessageBox.Show("Добавление произведено успешно");
+            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
 
         }
 
         protected override void Delete(object obj)
         {
             var enrl = _db.EnrolleeSet.Find(SelectedEnrolle.enrolee.Id);
+            var exam_sheet = _db.Exam_sheetSet.Find(enrl.Exam_sheet.Exam_sheet_number);
             _db.EnrolleeSet.Remove(enrl);
+            _db.Exam_sheetSet.Remove(exam_sheet);
             _db.SaveChanges();
-            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            MessageBox.Show("Удаление произведено успешно");
         }
 
         protected override void Clear(object obj)

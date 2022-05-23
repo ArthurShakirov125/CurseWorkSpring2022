@@ -75,6 +75,11 @@ namespace AdmissionsCommittee.ModelView.MainView
         }
         protected override void Add(object obj)
         {
+            if (Flow.Name == null || Flow.Department == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             var flow = new Flow()
             {
                 Name = Flow.Name,
@@ -88,6 +93,11 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         protected override void Redact(object obj)
         {
+            if (Flow.Name == null)
+            {
+                MessageBox.Show("Пожалуйста заполните все поля");
+                return;
+            }
             _db.SaveChanges();
             MessageBox.Show("Редактирование выполнено успешно");
         }
