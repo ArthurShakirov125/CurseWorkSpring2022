@@ -61,6 +61,7 @@
             <Button Style="{StaticResource bigBtns}" Content="Добавить абитуриента" Command="{Binding ClearCommand}" Click="Add"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="Redact"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Cформировать экзаменационный лист" Command="{Binding CreateDocument}"></Button>
         </StackPanel>
     </Grid>
 </Page>

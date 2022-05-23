@@ -1,5 +1,6 @@
 ﻿using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
+using AdmissionsCommittee.Documents;
 using AdmissionsCommittee.View.Helper;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 {
     public class EnrollesModelView : BaseModelView
     {
+        private ExamSheetManager _examSheetManager;
         public List<string> Groups { get; set; }
 
         private Dates _dates;
@@ -30,7 +32,14 @@ namespace AdmissionsCommittee.ModelView.MainView
             Groups = _db.GroupSet.Select(g => g.Name).ToList();
 
             _dates = new Dates();
+
             
+
+        }
+
+        private string CreateDocname()
+        {
+            return "Экзаменационный лист. " + SelectedEnrolle.EnrolleSurename + ". " + SelectedEnrolle.EnrolleGroup;
         }
 
         private IEnumerable<EnrolleModleView> enrolleModles;
@@ -58,6 +67,54 @@ namespace AdmissionsCommittee.ModelView.MainView
         }
 
 
+        private RelayCommand createDocument;
+
+        public RelayCommand CreateDocument
+        {
+            get
+            {
+                return createDocument ??
+                    (createDocument = new RelayCommand(CreateDoc));
+            }
+        }
+
+        private void CreateDoc(object obj)
+        {
+            _examSheetManager = new ExamSheetManager(docName: CreateDocname());
+
+            MadePairs();
+            
+            _examSheetManager.MadeDocument();
+
+            MessageBox.Show($"Документ успешно создан в директории {_examSheetManager.PathToSave}");
+        }
+
+        private void MadePairs()
+        {
+            Enrollee e = _db.EnrolleeSet.Where(u => u.Id == SelectedEnrolle.enrolee.Id).First();
+            _examSheetManager.Pairs = new Dictionary<string, string>()
+            {
+                {"<University>", _db.UniversitySet.First().Name },
+                {"<Sheet_number>", e.Exam_sheet.Exam_sheet_number.ToString() },
+                {"<Faculty>", e.Exam_sheet.Group.Flow.Department.Faculty.Name },
+                {"<Spec>", e.Exam_sheet.Group.Flow.Department.Name },
+                {"<Surename>", e.Surname },
+                {"<Name>", e.Name },
+                {"<Lastname>", e.Lastname },
+                {"<DateOfDelivery>", DateTime.Now.ToString("dd.MM.yyyy") },
+
+                {"<n1>", e.Exam_sheet.Group.Flow.Exam_schedule.First().Id.ToString() },
+                {"<Sub1>", e.Exam_sheet.Group.Flow.Exam_schedule.First().Subject.Name },
+                {"<Date1>", e.Exam_sheet.Group.Flow.Exam_schedule.First().Date.ToString("dd:MM") },
+                {"<Classroom1>", e.Exam_sheet.Group.Flow.Exam_schedule.First().Classroom },
+
+
+                {"<n2>", e.Exam_sheet.Group.Flow.Exam_schedule.Skip(1).First().Id.ToString() },
+                {"<Sub2>", e.Exam_sheet.Group.Flow.Exam_schedule.Skip(1).First().Subject.Name },
+                {"<Date2>", e.Exam_sheet.Group.Flow.Exam_schedule.Skip(1).First().Date.ToString("dd:MM") },
+                {"<Classroom2>", e.Exam_sheet.Group.Flow.Exam_schedule.Skip(1).First().Classroom },
+            };
+        }
 
         public void initializeDates()
         {
