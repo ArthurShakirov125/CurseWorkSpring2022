@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class ExamSheetModleView : EntityModelView<Exam_sheet>
+    public class ExamSheetModelView : EntityModelView<Exam_sheet>
     {
-        public ExamSheetModleView(Exam_sheet model) : base(model)
+        public ExamSheetModelView(Exam_sheet model) : base(model)
         {
         }
 

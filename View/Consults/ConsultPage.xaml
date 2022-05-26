@@ -50,7 +50,7 @@
         <ListView SelectedItem="{Binding Consultation}" ItemsSource="{Binding Consultations}" Grid.Column="0" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Название" Width="100" DisplayMemberBinding="{Binding Path=SubjectName}"></GridViewColumn>
+                    <GridViewColumn Header="Предмет" Width="100" DisplayMemberBinding="{Binding Path=SubjectName}"></GridViewColumn>
                     <GridViewColumn Header="Поток" Width="Auto" DisplayMemberBinding="{Binding Path=Flow}"></GridViewColumn>
                     <GridViewColumn Header="Кабинет" Width="Auto" DisplayMemberBinding="{Binding Path=Classroom}"></GridViewColumn>
                     <GridViewColumn Header="Дата" Width="Auto" DisplayMemberBinding="{Binding Path=Date}"></GridViewColumn>

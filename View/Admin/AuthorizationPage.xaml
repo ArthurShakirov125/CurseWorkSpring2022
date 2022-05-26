@@ -12,11 +12,11 @@
 
     <Grid Margin="0,0,0,100">
         <StackPanel Width="500" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="200">
-            <TextBlock Height="30" VerticalAlignment="Bottom" FontSize="16" Margin="5,0,0,0">Login</TextBlock>
+            <TextBlock Height="30" VerticalAlignment="Bottom" FontSize="16" Margin="5,0,0,0">Логин</TextBlock>
             <TextBox Height="20" Margin="0,0,0,20" Text="{Binding User.Login}"></TextBox>
-            <TextBlock HorizontalAlignment="Stretch" Height="30" FontSize="16" VerticalAlignment="Stretch" Margin="5,0,0,0">Password</TextBlock>
+            <TextBlock HorizontalAlignment="Stretch" Height="30" FontSize="16" VerticalAlignment="Stretch" Margin="5,0,0,0">Пароль</TextBlock>
             <TextBox Height="20" Text="{Binding User.Password}"></TextBox>
-            <Button Content="Confirm" Height="20" Width="250" Margin="0,20,0,0" Command="{Binding TryTo}" ></Button>
+            <Button Content="Войти" Height="20" Width="250" Margin="0,20,0,0" Command="{Binding TryTo}" ></Button>
         </StackPanel>
     </Grid>
 </Page>

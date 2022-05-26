@@ -86,7 +86,7 @@
     <Compile Include="ModelView\MainView\Logic\EnrollesModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\ExamModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\ExamSetModelView.cs" />
-    <Compile Include="ModelView\MainView\Entities\ExamSheetModleView.cs" />
+    <Compile Include="ModelView\MainView\Entities\ExamSheetModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\ExamSheetsModleView.cs" />
     <Compile Include="ModelView\MainView\Logic\ExamStatementSetViewModel.cs" />
     <Compile Include="ModelView\MainView\Entities\ExamStatementViewModel.cs" />
@@ -382,6 +382,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AdmissionsCommitteeDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagrams\Abstract\ClassDiagram1.cd" />
     <None Include="DataBase\AdmissionsCommitteeDB.edmx.diagram">
       <DependentUpon>AdmissionsCommitteeDB.edmx</DependentUpon>
     </None>

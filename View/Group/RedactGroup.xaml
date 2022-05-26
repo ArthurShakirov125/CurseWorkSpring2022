@@ -20,8 +20,6 @@
         <StackPanel>
             <TextBlock Text="Название"></TextBlock>
             <TextBox Text="{Binding SelectedGroup.Name}"></TextBox>
-            <TextBlock Text="Поток"></TextBlock>
-            <ComboBox ItemsSource="{Binding Flows}" SelectedItem="{Binding SelectedGroup.Flow}"></ComboBox>
             <Button Content="Сохранить" Command="{Binding RedactCommand}" Margin="0,15,0,0"></Button>
         </StackPanel>
     </Grid>

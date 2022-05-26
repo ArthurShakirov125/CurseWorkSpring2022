@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
-    public class EnrolleModleView : EntityModelView<Enrollee>
+    public class EnrolleModelView : EntityModelView<Enrollee>
     {
-        public EnrolleModleView(Enrollee model) : base(model)
+        public EnrolleModelView(Enrollee model) : base(model)
         {
         }
 

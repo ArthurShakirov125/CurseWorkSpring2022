@@ -13,7 +13,7 @@ namespace AdmissionsCommittee.Security
         {
             byte[] src = Encoding.ASCII.GetBytes(value);
 
-            var Hash = new MD5CryptoServiceProvider().ComputeHash(src);
+            var Hash = new MD5CryptoServiceProvider().ComputeHash(src); 
 
             return ByteArrayToString(Hash);
         }

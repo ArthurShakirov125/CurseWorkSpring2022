@@ -20,7 +20,7 @@
         <StackPanel>
             <TextBlock Text="Название"></TextBlock>
             <TextBox Text="{Binding Flow.Name}"></TextBox>
-            <TextBlock Text="Факультет"></TextBlock>
+            <TextBlock Text="Кафедра"></TextBlock>
             <ComboBox ItemsSource="{Binding Departs}" SelectedItem="{Binding Flow.Department}"></ComboBox>
             <Button Content="Добавить" Command="{Binding CreateNew}" Margin="0,15,0,0"></Button>
         </StackPanel>

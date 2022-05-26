@@ -10,9 +10,9 @@ namespace AdmissionsCommittee.ModelView.MainView
 {
     public class ExamSheetsModleView : BaseModelView
     {
-        private IEnumerable<ExamSheetModleView> examSheets;
+        private IEnumerable<ExamSheetModelView> examSheets;
 
-        public IEnumerable<ExamSheetModleView> ExamSheets
+        public IEnumerable<ExamSheetModelView> ExamSheets
         {
             get { return examSheets; }
             set 
@@ -22,9 +22,9 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        private ExamSheetModleView sheet;
+        private ExamSheetModelView sheet;
 
-        public ExamSheetModleView ExamSheet
+        public ExamSheetModelView ExamSheet
         {
             get { return sheet; }
             set 
@@ -36,7 +36,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         public ExamSheetsModleView()
         {
-            ExamSheets = _db.Exam_sheetSet.ToList().Select(e => new ExamSheetModleView(e));
+            ExamSheets = _db.Exam_sheetSet.ToList().Select(e => new ExamSheetModelView(e));
         }
 
         protected override void Add(object obj)

@@ -26,10 +26,10 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource textForForm}" Text="Login" Grid.Row="1"></TextBlock>
+        <TextBlock Style="{StaticResource textForForm}" Text="Логин" Grid.Row="1"></TextBlock>
         <TextBox Style="{StaticResource textForForm}" Text="{Binding NewUser.Login}" Grid.Row="2"></TextBox>
-        <TextBlock Style="{StaticResource textForForm}" Grid.Row="3" Text="Password"></TextBlock>
+        <TextBlock Style="{StaticResource textForForm}" Grid.Row="3" Text="Пароль"></TextBlock>
         <TextBox Style="{StaticResource textForForm}" Text="{Binding NewUser.Password}" Grid.Row="4"></TextBox>
-        <Button Grid.Row="7" Content="Create new User" Command="{Binding CreateNew}" Width="200" Height="40"></Button>
+        <Button Grid.Row="7" Content="Добавить" Command="{Binding CreateNew}" Width="200" Height="40"></Button>
     </Grid>
 </Window>

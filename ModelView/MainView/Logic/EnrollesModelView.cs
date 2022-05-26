@@ -27,7 +27,7 @@ namespace AdmissionsCommittee.ModelView.MainView
 
         public EnrollesModelView()
         {
-            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            enrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModelView(e));
 
             Groups = _db.GroupSet.Select(g => g.Name).ToList();
 
@@ -42,9 +42,9 @@ namespace AdmissionsCommittee.ModelView.MainView
             return "Экзаменационный лист. " + SelectedEnrolle.EnrolleSurename + ". " + SelectedEnrolle.EnrolleGroup;
         }
 
-        private IEnumerable<EnrolleModleView> enrolleModles;
+        private IEnumerable<EnrolleModelView> enrolleModles;
 
-        public IEnumerable<EnrolleModleView> EnrolleModles
+        public IEnumerable<EnrolleModelView> EnrolleModles
         {
             get { return enrolleModles; }
             set
@@ -54,9 +54,9 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        private EnrolleModleView selectedEnrolle;
+        private EnrolleModelView selectedEnrolle;
 
-        public EnrolleModleView SelectedEnrolle
+        public EnrolleModelView SelectedEnrolle
         {
             get { return selectedEnrolle; }
             set 
@@ -196,7 +196,7 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.SaveChanges();
 
             MessageBox.Show("Добавление произведено успешно");
-            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModelView(e));
 
         }
 
@@ -207,13 +207,13 @@ namespace AdmissionsCommittee.ModelView.MainView
             _db.EnrolleeSet.Remove(enrl);
             _db.Exam_sheetSet.Remove(exam_sheet);
             _db.SaveChanges();
-            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModleView(e));
+            EnrolleModles = _db.EnrolleeSet.ToList().Select(e => new EnrolleModelView(e));
             MessageBox.Show("Удаление произведено успешно");
         }
 
         protected override void Clear(object obj)
         {
-            SelectedEnrolle = new EnrolleModleView(new Enrollee()
+            SelectedEnrolle = new EnrolleModelView(new Enrollee()
             {
                 Exam_sheet = new Exam_sheet()
                 {

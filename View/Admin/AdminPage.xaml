@@ -27,15 +27,15 @@
         <ListView SelectedItem="{Binding SelectedUser}" ItemsSource="{Binding Users}" Grid.Column="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="200"  Header="User" DisplayMemberBinding="{Binding Path=Login}"></GridViewColumn>
+                    <GridViewColumn Width="200"  Header="Пользователь" DisplayMemberBinding="{Binding Path=Login}"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" Height="40">
-            <Button Style="{StaticResource buttons}" Content="Redact" Click="ReadactSelectedUser" Command="{Binding TakeSelectedUser}" Width="100"></Button>
-            <Button Style="{StaticResource buttons}" Content="Delete" Command="{Binding DeleteCommand}"></Button>
-            <Button Style="{StaticResource buttons}" Content="Create new" Click="CreateNewUser"></Button>
+            <Button Style="{StaticResource buttons}" Content="Изменить" Click="ReadactSelectedUser" Command="{Binding TakeSelectedUser}" Width="100"></Button>
+            <Button Style="{StaticResource buttons}" Content="Удалить" Command="{Binding DeleteCommand}"></Button>
+            <Button Style="{StaticResource buttons}" Content="Добавить" Click="CreateNewUser"></Button>
         </StackPanel>
     </Grid>
 </Page>

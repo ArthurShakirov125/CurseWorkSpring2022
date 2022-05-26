@@ -20,6 +20,7 @@
         <StackPanel>
             <TextBlock Text="Кабинет"></TextBlock>
             <TextBox Text="{Binding Exam.Classroom}"></TextBox>
+            <TextBlock Text="Дата проведения" VerticalAlignment="Center"/>
             <StackPanel Orientation="Horizontal">
                 <ComboBox  Width="100" ItemsSource="{Binding Date.days}" SelectedValue="{Binding Date.SelectedDay}"></ComboBox>
                 <ComboBox  Width="100" ItemsSource="{Binding Date.months}" SelectedValue="{Binding Date.SelectedMonth}"></ComboBox>
