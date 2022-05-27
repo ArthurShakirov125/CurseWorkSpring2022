@@ -36,11 +36,5 @@
             <Button Style="{StaticResource tileBtns}" Click="ToDepartsPage" Content="Кафедры"></Button>
             <Button Style="{StaticResource tileBtns}" Click="ToSubjectsPage" Content="Предметы"></Button>
         </StackPanel>
-
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационный лист" Click="MakeExamsStatement"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Составить экзаменационную ведомость"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Составить списки на зачесление"></Button>
-        </StackPanel>
     </Grid>
 </Page>

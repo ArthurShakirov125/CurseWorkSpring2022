@@ -92,10 +92,5 @@ namespace AdmissionsCommittee.View
             win.DataContext = _context;
             win.Show();
         }
-
-        private void ToExamStatement(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

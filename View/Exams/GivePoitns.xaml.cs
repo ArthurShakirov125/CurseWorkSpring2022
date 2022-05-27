@@ -1,5 +1,4 @@
-﻿using AdmissionsCommittee.ModelView.MainView;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdmissionsCommittee.View
+namespace AdmissionsCommittee.View.Exams
 {
     /// <summary>
-    /// Логика взаимодействия для ExamStatementPage.xaml
+    /// Логика взаимодействия для GivePoitns.xaml
     /// </summary>
-    public partial class ExamStatementPage : Page
+    public partial class GivePoitns : Window
     {
-        public ExamStatementPage()
+        public GivePoitns()
         {
             InitializeComponent();
-            DataContext = new ExamStatementSetViewModel();
         }
     }
 }

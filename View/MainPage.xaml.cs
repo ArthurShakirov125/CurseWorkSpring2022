@@ -76,10 +76,5 @@ namespace AdmissionsCommittee.ModelView
             SubjectsPage page = new SubjectsPage(_navigationService);
             _navigationService.Navigate(page);
         }
-        private void MakeExamsStatement(object sender, RoutedEventArgs e)
-        {
-            ExamStatementPage page = new ExamStatementPage();
-            _navigationService.Navigate(page);
-        }
     }
 }

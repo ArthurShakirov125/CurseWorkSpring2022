@@ -128,11 +128,11 @@
     <Compile Include="View\Exams\ExamsPage.xaml.cs">
       <DependentUpon>ExamsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExamStatementPage.xaml.cs">
-      <DependentUpon>ExamStatementPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Exams\ExamStatementWin.xaml.cs">
       <DependentUpon>ExamStatementWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exams\GivePoitns.xaml.cs">
+      <DependentUpon>GivePoitns.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Exams\RedactExam.xaml.cs">
       <DependentUpon>RedactExam.xaml</DependentUpon>
@@ -290,11 +290,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExamStatementPage.xaml">
+    <Page Include="View\Exams\ExamStatementWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Exams\ExamStatementWin.xaml">
+    <Page Include="View\Exams\GivePoitns.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

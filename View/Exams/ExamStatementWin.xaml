@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdmissionsCommittee.View.Exams"
+        xmlns:viewModel="clr-namespace:AdmissionsCommittee.ModelView.MainView" 
+        d:DataContext="{d:DesignInstance Type=viewModel:ExamStatementSetViewModel}"
         mc:Ignorable="d"
-        Title="ExamStatementWin" Height="450" Width="800">
+        Title="ExamStatementWin" Height="750" Width="1080">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding GeneralText}" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <ListView SelectedItem="{Binding Exam}" ItemsSource="{Binding Exams}" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Номер экз листа" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleeNumber}"></GridViewColumn>
+                    <GridViewColumn Header="Фамилия" Width="Auto" DisplayMemberBinding="{Binding Path=EnrolleLastName}"></GridViewColumn>
+                    <GridViewColumn Header="Оценка" Width="Auto" DisplayMemberBinding="{Binding Path=Mark}"></GridViewColumn>
+                    <GridViewColumn Header="Баллы" Width="Auto" DisplayMemberBinding="{Binding Path=Points}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Button  Height="30" VerticalAlignment="Top" Content="Выставить баллы" Click="ShowWin"></Button>
+            <Button  Height="30" VerticalAlignment="Top" Content="Составить документ"></Button>
+        </StackPanel>
         
     </Grid>
 </Window>

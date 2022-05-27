@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
+using AdmissionsCommittee.View.Exams;
 using AdmissionsCommittee.View.Helper;
 
 namespace AdmissionsCommittee.ModelView.MainView
@@ -18,6 +19,22 @@ namespace AdmissionsCommittee.ModelView.MainView
         {
             get { return _dates; }
             set { _dates = value; }
+        }
+        protected RelayCommand giveMarks;
+
+        public RelayCommand GiveMarks
+        {
+            get
+            {
+                return giveMarks ??
+                    (giveMarks = new RelayCommand(ExamStatementWindow));
+            }
+        }
+
+        private void ExamStatementWindow(object obj)
+        {
+            ExamStatementWin win = new ExamStatementWin(Exam);
+            win.Show();
         }
 
         private IEnumerable<ExamModelView> exams;

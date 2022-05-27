@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/21/2022 14:46:34
+-- Date Created: 05/27/2022 11:39:13
 -- Generated from EDMX file: C:\C#\Curswork\AdmissionsCommittee\DataBase\AdmissionsCommitteeDB.edmx
 -- --------------------------------------------------
 
@@ -45,7 +45,7 @@ IF OBJECT_ID(N'[dbo].[FK_Exam_scheduleSubject]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Exam_scheduleSet] DROP CONSTRAINT [FK_Exam_scheduleSubject];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Exam_scheduleExam_statement]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Exam_scheduleSet] DROP CONSTRAINT [FK_Exam_scheduleExam_statement];
+    ALTER TABLE [dbo].[Exam_statementSet] DROP CONSTRAINT [FK_Exam_scheduleExam_statement];
 GO
 
 -- --------------------------------------------------

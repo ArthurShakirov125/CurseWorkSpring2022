@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdmissionsCommittee.ModelView.MainView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,22 @@ namespace AdmissionsCommittee.View.Exams
     /// </summary>
     public partial class ExamStatementWin : Window
     {
-        public ExamStatementWin()
+        private ExamModelView exam;
+        private ExamStatementSetViewModel context;
+
+        public ExamStatementWin(ExamModelView exam)
         {
             InitializeComponent();
+            this.exam = exam;
+            context = new ExamStatementSetViewModel(exam);
+            DataContext = context;
+        }
+
+        private void ShowWin(object sender, RoutedEventArgs e)
+        {
+            GivePoitns win = new GivePoitns();
+            win.DataContext = context;
+            win.ShowDialog();
         }
     }
 }

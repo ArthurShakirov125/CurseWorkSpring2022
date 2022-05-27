@@ -10,9 +10,53 @@ namespace AdmissionsCommittee.ModelView.MainView
 {
     public class ExamStatementSetViewModel : BaseModelView
     {
-        public ExamStatementSetViewModel()
+        public ExamStatementSetViewModel(ExamModelView exam)
         {
             Exams = _db.Exam_statementSet.ToList().Select(e => new ExamStatementViewModel(e));
+            examToWork = exam.Exam;
+            GetEnrollees();
+            CreateGeneralText();
+        }
+
+        private void CreateGeneralText()
+        {
+            GeneralText = $"Экзаменационная ведомость {examToWork.Flow.Name} потока по предмету {examToWork.Subject.Name}";
+        }
+
+        public string GeneralText { get; set; }
+        private void GetEnrollees()
+        {
+            var groups = examToWork.Flow.Group;
+            var examSheets = groups.Select(g => g.Exam_sheet);
+            enrollees = examSheets.SelectMany(e => e.Select(ex => ex.Enrollee));
+
+            if (!_db.Exam_statementSet.Any())
+            {
+                initializeExamStatement();
+            }
+            else
+            {
+                Exams = _db.Exam_statementSet.ToList().Select(e => new ExamStatementViewModel(e));
+            }
+        }
+
+        private void initializeExamStatement()
+        {
+            foreach (var enrl in enrollees)
+            {
+                Exams = Exams.Append(new ExamStatementViewModel(new Exam_statement()
+                {
+                    Enrolle_last_name = enrl.Surname,
+                    Exam_sheet_number = enrl.Exam_sheet.Exam_sheet_number,
+                    Exam_schedule = _db.Exam_scheduleSet.First(e => e.Id == examToWork.Id)
+                }));
+            }
+
+            foreach (var ex in Exams)
+            {
+                _db.Exam_statementSet.Add(ex.examStatement);
+            }
+            _db.SaveChanges();
         }
 
         private IEnumerable<ExamStatementViewModel> exams;
@@ -27,6 +71,8 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
+        private IEnumerable<Enrollee> enrollees;
+
         private ExamStatementViewModel exam;
 
         public ExamStatementViewModel Exam
@@ -39,33 +85,44 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
+        private Exam_schedule examToWork;
+
         protected override void Add(object obj)
         {
-            Exam_statement ex = new Exam_statement()
-            {
-                Mark = Exam.Mark,
-                Points = Exam.Points
-            };
-
-            _db.Exam_statementSet.Add(ex);
-            _db.SaveChanges();
         }
 
         protected override void Redact(object obj)
         {
+            Exam.Mark = CalculateMark();
             _db.SaveChanges();
+        }
+
+        private byte? CalculateMark()
+        {
+            var Subject = examToWork.Subject;
+
+            if(Exam.Points < Subject.Pass_points_to_three)
+            {
+                return 2;
+            }
+            if (Exam.Points >= Subject.Pass_points_to_three && Exam.Points < Subject.Pass_points_to_four)
+            {
+                return 3;
+            }
+            if (Exam.Points >= Subject.Pass_points_to_four && Exam.Points < Subject.Pass_points_to_five)
+            {
+                return 4;
+            }
+            return 5;
         }
 
         protected override void Delete(object obj)
         {
-            var ex = _db.Exam_statementSet.Find(Exam.examStatement.Id);
-            _db.Exam_statementSet.Remove(ex);
-            _db.SaveChanges();
+            
         }
 
         protected override void Clear(object obj)
         {
-            Exam = new ExamStatementViewModel(new Exam_statement());
         }
     }
 }

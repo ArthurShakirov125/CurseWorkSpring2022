@@ -44,7 +44,7 @@
             <Button Style="{StaticResource bigBtns}" Content="Добавить" Command="{Binding ClearCommand}" Click="AddWin"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}" ></Button>
             <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="RedactWin"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Выставить баллы" Click="ToExamStatement"/>
+            <Button Style="{StaticResource bigBtns}" Content="Выставить баллы" Command="{Binding GiveMarks}"/>
         </StackPanel>
 
 
@@ -55,7 +55,6 @@
                     <GridViewColumn Header="Поток" Width="Auto" DisplayMemberBinding="{Binding Path=Flow}"></GridViewColumn>
                     <GridViewColumn Header="Кабинет" Width="Auto" DisplayMemberBinding="{Binding Path=Classroom}"></GridViewColumn>
                     <GridViewColumn Header="Дата" Width="Auto" DisplayMemberBinding="{Binding Path=Date}"></GridViewColumn>
-
                 </GridView>
             </ListView.View>
         </ListView>

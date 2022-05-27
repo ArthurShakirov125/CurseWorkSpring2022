@@ -24,11 +24,6 @@ namespace AdmissionsCommittee.ModelView.MainView
             }
         }
 
-        public string Subject
-        {
-            get { return _model.Exam_schedule.Subject.Name; }
-        }
-
 
         public short? Points
         {
@@ -46,6 +41,26 @@ namespace AdmissionsCommittee.ModelView.MainView
             set
             {
                 _model.Mark = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string EnrolleLastName
+        {
+            get { return _model.Enrolle_last_name; }
+            set
+            {
+                _model.Enrolle_last_name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int EnrolleeNumber
+        {
+            get { return _model.Exam_sheet_number; }
+            set
+            {
+                _model.Exam_sheet_number = value;
                 OnPropertyChanged();
             }
         }
