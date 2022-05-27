@@ -58,13 +58,6 @@
       <FileName>ModelView\MainView\Entities\DepartmentModelView.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AdmissionsCommittee.ModelView.MainView.EnrolleModelView">
-    <Position X="14.25" Y="4.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAIAAAQEAAAAAAAFAgAAAwAACAACAAAQAA=</HashCode>
-      <FileName>ModelView\MainView\Entities\EnrolleModelView.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="AdmissionsCommittee.ModelView.MainView.ExamModelView">
     <Position X="12.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
@@ -217,6 +210,13 @@
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAAAAABAAAg=</HashCode>
       <FileName>Abstract\EntityModelView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdmissionsCommittee.ModelView.MainView.EnrolleModelView">
+    <Position X="14.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAIAAAQEAAAAAAAFAgAAAwAACAACAAAQAA=</HashCode>
+      <FileName>ModelView\MainView\Entities\EnrolleModelView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

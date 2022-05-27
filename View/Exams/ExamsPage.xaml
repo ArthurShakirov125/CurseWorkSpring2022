@@ -44,7 +44,7 @@
             <Button Style="{StaticResource bigBtns}" Content="Добавить" Command="{Binding ClearCommand}" Click="AddWin"></Button>
             <Button Style="{StaticResource bigBtns}" Content="Удалить" Command="{Binding DeleteCommand}" ></Button>
             <Button Style="{StaticResource bigBtns}" Content="Редактировать" Click="RedactWin"></Button>
-            <Button Style="{StaticResource bigBtns}" Content="Выставить баллы"></Button>
+            <Button Style="{StaticResource bigBtns}" Content="Выставить баллы" Click="ToExamStatement"/>
         </StackPanel>
 
 

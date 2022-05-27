@@ -79,10 +79,10 @@
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />
     <Compile Include="ModelView\AdminPageViews\UserViewModel.cs" />
     <Compile Include="ModelView\MainView\Entities\ConsultationModelView.cs" />
+    <Compile Include="ModelView\MainView\Entities\EnrolleModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\ConsultationSetModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\DepartmentModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\DepartmentSetModelView.cs" />
-    <Compile Include="ModelView\MainView\Entities\EnrolleModleView.cs" />
     <Compile Include="ModelView\MainView\Logic\EnrollesModelView.cs" />
     <Compile Include="ModelView\MainView\Entities\ExamModelView.cs" />
     <Compile Include="ModelView\MainView\Logic\ExamSetModelView.cs" />
@@ -130,6 +130,9 @@
     </Compile>
     <Compile Include="View\ExamStatementPage.xaml.cs">
       <DependentUpon>ExamStatementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exams\ExamStatementWin.xaml.cs">
+      <DependentUpon>ExamStatementWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Exams\RedactExam.xaml.cs">
       <DependentUpon>RedactExam.xaml</DependentUpon>
@@ -288,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExamStatementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Exams\ExamStatementWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
