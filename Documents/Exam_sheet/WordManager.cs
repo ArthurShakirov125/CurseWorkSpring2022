@@ -15,7 +15,7 @@ namespace AdmissionsCommittee.Documents
     /// </summary>
     public class WordManager
     {
-        private FileInfo _fileInfo;
+        public FileInfo _fileInfo;
         private Dictionary<string, string> _items;
         private FileInfo _templateFilePath;
 
@@ -36,7 +36,6 @@ namespace AdmissionsCommittee.Documents
             PathToSave = pathToSave;
             NewDocName = docName;
             _fileInfo = new FileInfo(CopyFile(_templateFilePath.FullName));
-            
         }
 
         public void GiveInfo(Dictionary<string, string> items)
@@ -84,6 +83,8 @@ namespace AdmissionsCommittee.Documents
             catch (Exception e) { Console.WriteLine(e.Message); }
         }
 
+        
+
 
         private string CopyFile(string src)
         {
@@ -109,7 +110,7 @@ namespace AdmissionsCommittee.Documents
             sourceDoc.Close(false);
             newDocument.Close();
 
-            app.Quit();
+           // app.Quit();
 
             return newFilePath;
         }

@@ -71,9 +71,10 @@
     <Compile Include="Abstract\BaseModelView.cs" />
     <Compile Include="Abstract\EntityModelView.cs" />
     <Compile Include="Abstract\RelayCommand.cs" />
-    <Compile Include="Documents\ExamSheetManager.cs" />
-    <Compile Include="Documents\ExamSheetStructure.cs" />
-    <Compile Include="Documents\WordManager.cs" />
+    <Compile Include="Documents\Exam_sheet\ExamSheetManager.cs" />
+    <Compile Include="Documents\Exam_sheet\ExamSheetStructure.cs" />
+    <Compile Include="Documents\Exam_sheet\WordManager.cs" />
+    <Compile Include="Documents\Exam_statements\ExamStatementManager.cs" />
     <Compile Include="ModelView\AdminPageViews\Authorization.cs" />
     <Compile Include="ModelView\AdminPageViews\UniversityModelView.cs" />
     <Compile Include="ModelView\AdminPageViews\UsersViewModel.cs" />

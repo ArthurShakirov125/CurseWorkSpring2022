@@ -32,7 +32,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button  Height="30" VerticalAlignment="Top" Content="Выставить баллы" Click="ShowWin"></Button>
-            <Button  Height="30" VerticalAlignment="Top" Content="Составить документ"></Button>
+            <Button  Height="30" VerticalAlignment="Top" Content="Составить документ" Command="{Binding CreateDocument}"></Button>
         </StackPanel>
         
     </Grid>

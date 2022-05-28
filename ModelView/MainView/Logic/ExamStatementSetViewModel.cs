@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
+using AdmissionsCommittee.Documents.Exam_statements;
 
 namespace AdmissionsCommittee.ModelView.MainView
 {
@@ -16,6 +18,24 @@ namespace AdmissionsCommittee.ModelView.MainView
             examToWork = exam.Exam;
             GetEnrollees();
             CreateGeneralText();
+        }
+
+        protected RelayCommand createDoc;
+
+        public RelayCommand CreateDocument
+        {
+            get
+            {
+                return createDoc ??
+                    (createDoc = new RelayCommand(CreateDoc));
+            }
+        }
+
+        private void CreateDoc(object obj)
+        {
+            ExamStatementManager manager = new ExamStatementManager();
+            manager.CreateAndFillTable(exams);
+            MessageBox.Show("Succes");
         }
 
         private void CreateGeneralText()
