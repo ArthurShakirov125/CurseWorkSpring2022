@@ -20,6 +20,7 @@ namespace AdmissionsCommittee.Documents.Exam_statements
         private FileInfo _fileInfo;
 
         private List<string> header;
+        private Dictionary<string, string> _pairs;
 
         public ExamStatementManager(string pathToSave = @"C:\Users\Wolve\Desktop", string docName = "Экзаменационная ведомость")
         {
@@ -28,6 +29,11 @@ namespace AdmissionsCommittee.Documents.Exam_statements
             wordManager = new WordManager(FILEPATH, pathToSave, docName);
             _fileInfo = wordManager._fileInfo;
             InitializeHeader();
+        }
+
+        public void GivePairs(Dictionary<string, string> pairs)
+        {
+            _pairs = pairs;
         }
 
         private void InitializeHeader()
@@ -41,8 +47,9 @@ namespace AdmissionsCommittee.Documents.Exam_statements
             };
         }
 
-        public void CreateAndFillTable(IEnumerable<ExamStatementViewModel> exams)
+        public string CreateAndFillTable(IEnumerable<ExamStatementViewModel> exams)
         {
+            PrepareDoc();
             var examList = exams.ToList();
             var app = new Word.Application();
             object file = _fileInfo.FullName;
@@ -68,9 +75,18 @@ namespace AdmissionsCommittee.Documents.Exam_statements
             }
 
 
+
             doc.Save();
             doc.Close();
             app.Quit();
+
+            return _fileInfo.DirectoryName;
+        }
+
+        private void PrepareDoc()
+        {
+            wordManager.GiveInfo(_pairs);
+            wordManager.Perform();
         }
     }
 }

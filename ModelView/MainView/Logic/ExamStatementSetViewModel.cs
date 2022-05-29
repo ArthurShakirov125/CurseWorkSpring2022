@@ -34,8 +34,19 @@ namespace AdmissionsCommittee.ModelView.MainView
         private void CreateDoc(object obj)
         {
             ExamStatementManager manager = new ExamStatementManager();
-            manager.CreateAndFillTable(exams);
-            MessageBox.Show("Succes");
+            manager.GivePairs(CreatePairs());
+            var path = manager.CreateAndFillTable(exams);
+            MessageBox.Show($"Файл успешно создан в директории {path}");
+        }
+
+        private Dictionary<string, string> CreatePairs()
+        {
+            return new Dictionary<string, string>
+            {
+                {"<University>", _db.UniversitySet.First().Name },
+                {"<Faculty>", examToWork.Flow.Department.Faculty.Name },
+                {"<Subject>", examToWork.Subject.Name }
+            };
         }
 
         private void CreateGeneralText()
@@ -115,6 +126,7 @@ namespace AdmissionsCommittee.ModelView.MainView
         {
             Exam.Mark = CalculateMark();
             _db.SaveChanges();
+            MessageBox.Show("Изменения сохранены");
         }
 
         private byte? CalculateMark()
