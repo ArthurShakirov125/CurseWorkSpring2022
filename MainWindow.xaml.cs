@@ -1,5 +1,6 @@
 ﻿using AdmissionsCommittee.DataBase;
 using AdmissionsCommittee.ModelView;
+using AdmissionsCommittee.ModelView.AdminPageViews;
 using AdmissionsCommittee.View;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,20 @@ namespace AdmissionsCommittee
         public MainWindow()
         {
             InitializeComponent();
-            MainPage Page = new MainPage(this.NavigationService);
-            NavigationService.Navigate(Page);
+            var db = new AdmissionsCommitteeDBContainer();
+
+            if (db.UserSet.Any())
+            {
+                AuthorizationPage page = new AuthorizationPage(this.NavigationService);
+                NavigationService.Navigate(page);
+            }
+            else
+            {
+                AdminPage page = new AdminPage(NavigationService);
+                NavigationService.Navigate(page);
+            }
+
+            
         }
     }
 }

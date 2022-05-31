@@ -29,7 +29,6 @@ namespace AdmissionsCommittee.View
             InitializeComponent();
             this._navigationService = navigationService;
             DataContext = new Authorization(_navigationService);
-            
         }
     }
 }

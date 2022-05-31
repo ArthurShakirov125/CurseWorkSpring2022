@@ -75,7 +75,7 @@
   <Class Name="AdmissionsCommittee.ModelView.MainView.ExamStatementViewModel">
     <Position X="25.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAACAAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAACAAAAAIQA=</HashCode>
       <FileName>ModelView\MainView\Entities\ExamStatementViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -131,7 +131,7 @@
   <Class Name="AdmissionsCommittee.ModelView.MainView.ExamSetModelView">
     <Position X="2.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAYAAEAAAAAAAAAABAAAAAAAAAEAAABBACAAQABkAAg=</HashCode>
+      <HashCode>QAYAAEAAAAAAAAAAhAAAAIAAAAEAAABBACEAQABkAAg=</HashCode>
       <FileName>ModelView\MainView\Logic\ExamSetModelView.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -143,9 +143,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AdmissionsCommittee.ModelView.MainView.ExamStatementSetViewModel">
-    <Position X="6" Y="10" Width="1.5" />
+    <Position X="5.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAEAAABAACAAQABgAAg=</HashCode>
+      <HashCode>AgIIAAKAAABACAAAAAAAAAIAQAEAAAFAACQAQABgEAg=</HashCode>
       <FileName>ModelView\MainView\Logic\ExamStatementSetViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -171,7 +171,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AdmissionsCommittee.ModelView.MainView.SubjectSetModelView">
-    <Position X="6" Y="13.5" Width="1.5" />
+    <Position X="11.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAEAAAAAAAAAAAIAAAAAAACEAAAAAAAAAAABAAAg=</HashCode>
       <FileName>ModelView\MainView\Logic\SubjectSetModelView.cs</FileName>
@@ -188,21 +188,21 @@
     <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAgAAAAAAAAEEABAAAQAAAAAgAAAAAAA=</HashCode>
-      <FileName>Documents\WordManager.cs</FileName>
+      <FileName>Documents\Exam_sheet\WordManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AdmissionsCommittee.Documents.ExamSheetStructure">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAQAAQAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
-      <FileName>Documents\ExamSheetStructure.cs</FileName>
+      <FileName>Documents\Exam_sheet\ExamSheetStructure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AdmissionsCommittee.Documents.ExamSheetManager">
     <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QEAAAAAAAIAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Documents\ExamSheetManager.cs</FileName>
+      <FileName>Documents\Exam_sheet\ExamSheetManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AdmissionsCommittee.Abstract.EntityModelView&lt;T&gt;">
@@ -217,6 +217,13 @@
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAIAAAQEAAAAAAAFAgAAAwAACAACAAAQAA=</HashCode>
       <FileName>ModelView\MainView\Entities\EnrolleModelView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdmissionsCommittee.Documents.Exam_statements.ExamStatementManager">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAQAEAAAAAAgIQAAAAAAAAAIAQAAAABAgEAEAAA=</HashCode>
+      <FileName>Documents\Exam_statements\ExamStatementManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

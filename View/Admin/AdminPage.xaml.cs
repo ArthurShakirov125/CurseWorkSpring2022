@@ -1,4 +1,5 @@
-﻿using AdmissionsCommittee.ModelView.AdminPageViews;
+﻿using AdmissionsCommittee.ModelView;
+using AdmissionsCommittee.ModelView.AdminPageViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,14 @@ namespace AdmissionsCommittee.View
         protected UsersViewModel usersViewModel;
         protected UserCreateWindow _createWindow;
         protected UserRedactWindow _redactWindow;
-        public AdminPage()
+        protected NavigationService _navigationService;
+        public AdminPage(NavigationService navigationService)
         {
             InitializeComponent();
-            
+
             usersViewModel = new UsersViewModel();
             this.DataContext = usersViewModel;
+            _navigationService = navigationService;
         }
 
         private void CreateNewUser(object sender, RoutedEventArgs e)
@@ -42,6 +45,11 @@ namespace AdmissionsCommittee.View
         {
             _redactWindow = new UserRedactWindow(usersViewModel);
             _redactWindow.Show();
+        }
+
+        private void ToMainPage(object sender, RoutedEventArgs e)
+        {
+            _navigationService.Navigate(new MainPage(_navigationService));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AdmissionsCommittee.ModelView.MainView;
+﻿using AdmissionsCommittee.Abstract;
+using AdmissionsCommittee.ModelView.MainView;
 using AdmissionsCommittee.View.Department;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace AdmissionsCommittee.View
     /// <summary>
     /// Логика взаимодействия для DepartmentPage.xaml
     /// </summary>
-    public partial class DepartmentPage : Page
+    public partial class DepartmentPage : Page, ICanNavigatePages
     {
         private NavigationService _navigationService;
         protected DepartmentSetModelView departmentSet;
@@ -33,49 +34,55 @@ namespace AdmissionsCommittee.View
             this._navigationService = navigationService;
         }
 
-        private void ToEnrollePage(object sender, RoutedEventArgs e)
+        public void ToEnrollePage(object sender, RoutedEventArgs e)
         {
             EnrollePage page = new EnrollePage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToFacultysPage(object sender, RoutedEventArgs e)
+        public void ToFacultysPage(object sender, RoutedEventArgs e)
         {
             FacultyPage page = new FacultyPage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToExamsPage(object sender, RoutedEventArgs e)
+        public void ToExamsPage(object sender, RoutedEventArgs e)
         {
             ExamsPage page = new ExamsPage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToConsultsPage(object sender, RoutedEventArgs e)
+        public void ToConsultsPage(object sender, RoutedEventArgs e)
         {
             ConsultPage page = new ConsultPage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToFlowsPage(object sender, RoutedEventArgs e)
+        public void ToFlowsPage(object sender, RoutedEventArgs e)
         {
             FlowsPage page = new FlowsPage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToGroupsPage(object sender, RoutedEventArgs e)
+        public void ToGroupsPage(object sender, RoutedEventArgs e)
         {
             GroupsPage page = new GroupsPage(_navigationService);
             _navigationService.Navigate(page);
         }
 
-        private void ToDepartsPage(object sender, RoutedEventArgs e)
+        public void ToDepartsPage(object sender, RoutedEventArgs e)
         {
         }
 
-        private void ToSubjectsPage(object sender, RoutedEventArgs e)
+        public void ToSubjectsPage(object sender, RoutedEventArgs e)
         {
             SubjectsPage page = new SubjectsPage(_navigationService);
+            _navigationService.Navigate(page);
+        }
+
+        public void ToAdminPage(object sender, RoutedEventArgs e)
+        {
+            AdminPage page = new AdminPage(_navigationService);
             _navigationService.Navigate(page);
         }
 

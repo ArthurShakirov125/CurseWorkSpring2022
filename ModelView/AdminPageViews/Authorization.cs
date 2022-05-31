@@ -1,6 +1,7 @@
 ﻿using AdmissionsCommittee.Abstract;
 using AdmissionsCommittee.DataBase;
 using AdmissionsCommittee.Security;
+using AdmissionsCommittee.View;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -83,10 +84,11 @@ namespace AdmissionsCommittee.ModelView.AdminPageViews
 
         public Authorization(NavigationService navigationService)
         {
-            _user = new UserViewModel(new User());
             _db = new AdmissionsCommitteeDBContainer();
-            UserSet = _db.UserSet;
             _navigationService = navigationService;
+            _user = new UserViewModel(new User());
+            UserSet = _db.UserSet;
         }
+
     }
 }

@@ -35,6 +35,7 @@
             <Button Style="{StaticResource tileBtns}" Click="ToFacultysPage" Content="Факультеты"></Button>
             <Button Style="{StaticResource tileBtns}" Click="ToDepartsPage" Content="Кафедры"></Button>
             <Button Style="{StaticResource tileBtns}" Click="ToSubjectsPage" Content="Предметы"></Button>
+            <Button Style="{StaticResource tileBtns}" Click="ToAdminPage" Content="Пользователи"></Button>
         </StackPanel>
     </Grid>
 </Page>

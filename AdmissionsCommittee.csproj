@@ -70,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Abstract\BaseModelView.cs" />
     <Compile Include="Abstract\EntityModelView.cs" />
+    <Compile Include="Abstract\ICanNavigatePages.cs" />
     <Compile Include="Abstract\RelayCommand.cs" />
     <Compile Include="Documents\Exam_sheet\ExamSheetManager.cs" />
     <Compile Include="Documents\Exam_sheet\ExamSheetStructure.cs" />
