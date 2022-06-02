@@ -11,7 +11,7 @@ namespace AdmissionsCommittee.Documents.Exam_statements
 {
     public class ExamStatementManager
     {
-        const string FILEPATH = @"C:\C#\Curswork\AdmissionsCommittee\Documents\Templates\Exam_statement.docx";
+        const string FILEPATH = @"..\..\Documents\Templates\Exam_statement.docx";
         const int COLUMNS = 4;
 
         WordManager wordManager;

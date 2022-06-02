@@ -8,7 +8,7 @@ namespace AdmissionsCommittee.Documents
 {
     internal class ExamSheetStructure
     {
-        public const string FILEPATH = @"C:\C#\Curswork\AdmissionsCommittee\Documents\Templates\Exam_sheet_template.docx";
+        public const string FILEPATH = @"..\..\Documents\Templates\Exam_sheet_template.docx";
 
         private Dictionary<string, string> keyValuePairs;
 
